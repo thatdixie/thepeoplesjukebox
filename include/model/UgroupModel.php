@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Ugroup.php";
 
 /********************************************************************
- * UgroupModel inherits EntityObjectsDB and provides functions to
- * map Ugroup class to entityobjectsDB.
+ * UgroupModel inherits JukeboxDB and provides functions to
+ * map Ugroup class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class UgroupModel extends EntityObjectsDB
+class UgroupModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a Ugroup by ugroupId
@@ -29,7 +29,7 @@ class UgroupModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new Ugroup into entityobjectsDB database
+     * Insert a new Ugroup into jukeboxDB database
      *
      * @param $ugroup
      * @return n/a
@@ -51,7 +51,7 @@ class UgroupModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new Ugroup into entityobjectsDB database
+     * Insert a new Ugroup into jukeboxDB database
      * and return a Ugroup with new autoincrement
      * primary key
      *
@@ -77,7 +77,7 @@ class UgroupModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a Ugroup in entityobjectsDB database
+     * Update a Ugroup in jukeboxDB database
      *
      * @param $ugroup
      * @return n/a

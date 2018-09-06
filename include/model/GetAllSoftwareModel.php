@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "GetAllSoftware.php";
 
 /********************************************************************
- * GetAllSoftwareModel inherits EntityObjectsDB and provides the select() 
- * function which maps the GetAllSoftware class/VIEW in entityobjectsDB.
+ * GetAllSoftwareModel inherits JukeboxDB and provides the select() 
+ * function which maps the GetAllSoftware class/VIEW in jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class GetAllSoftwareModel extends EntityObjectsDB
+class GetAllSoftwareModel extends JukeboxDB
 {
     /*********************************************************
      * Returns  GetAllSoftware VIEW

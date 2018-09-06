@@ -2,10 +2,10 @@
 require_once "DBObject.php";
 
 /********************************************
- * GetAllSoftware represents a table in entityobjectsDB 
+ * GetAllSoftware represents a table in jukeboxDB 
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  ********************************************
  */
 class GetAllSoftware extends DBObject

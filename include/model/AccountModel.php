@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Account.php";
 
 /********************************************************************
- * AccountModel inherits EntityObjectsDB and provides functions to
- * map Account class to entityobjectsDB.
+ * AccountModel inherits JukeboxDB and provides functions to
+ * map Account class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class AccountModel extends EntityObjectsDB
+class AccountModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a Account by accountId
@@ -37,7 +37,7 @@ class AccountModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new Account into entityobjectsDB database
+     * Insert a new Account into jukeboxDB database
      *
      * @param $account
      * @return n/a
@@ -75,7 +75,7 @@ class AccountModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new Account into entityobjectsDB database
+     * Insert a new Account into jukeboxDB database
      * and return a Account with new autoincrement
      * primary key
      *
@@ -117,7 +117,7 @@ class AccountModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a Account in entityobjectsDB database
+     * Update a Account in jukeboxDB database
      *
      * @param $account
      * @return n/a

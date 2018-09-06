@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Faq.php";
 
 /********************************************************************
- * FaqModel inherits EntityObjectsDB and provides functions to
- * map Faq class to entityobjectsDB.
+ * FaqModel inherits JukeboxDB and provides functions to
+ * map Faq class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class FaqModel extends EntityObjectsDB
+class FaqModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a Faq by faqId
@@ -34,7 +34,7 @@ class FaqModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new Faq into entityobjectsDB database
+     * Insert a new Faq into jukeboxDB database
      *
      * @param $faq
      * @return n/a
@@ -66,7 +66,7 @@ class FaqModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new Faq into entityobjectsDB database
+     * Insert a new Faq into jukeboxDB database
      * and return a Faq with new autoincrement
      * primary key
      *
@@ -102,7 +102,7 @@ class FaqModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a Faq in entityobjectsDB database
+     * Update a Faq in jukeboxDB database
      *
      * @param $faq
      * @return n/a

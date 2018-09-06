@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "User.php";
 
 /********************************************************************
- * UserModel inherits EntityObjectsDB and provides functions to
- * map User class to entityobjectsDB.
+ * UserModel inherits JukeboxDB and provides functions to
+ * map User class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class UserModel extends EntityObjectsDB
+class UserModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a User by userId
@@ -37,7 +37,7 @@ class UserModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new User into entityobjectsDB database
+     * Insert a new User into jukeboxDB database
      *
      * @param $user
      * @return n/a
@@ -75,7 +75,7 @@ class UserModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new User into entityobjectsDB database
+     * Insert a new User into jukeboxDB database
      * and return a User with new autoincrement
      * primary key
      *
@@ -117,7 +117,7 @@ class UserModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a User in entityobjectsDB database
+     * Update a User in jukeboxDB database
      *
      * @param $user
      * @return n/a

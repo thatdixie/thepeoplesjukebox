@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Permission.php";
 
 /********************************************************************
- * PermissionModel inherits EntityObjectsDB and provides functions to
- * map Permission class to entityobjectsDB.
+ * PermissionModel inherits JukeboxDB and provides functions to
+ * map Permission class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class PermissionModel extends EntityObjectsDB
+class PermissionModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a Permission by permissionId
@@ -29,7 +29,7 @@ class PermissionModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new Permission into entityobjectsDB database
+     * Insert a new Permission into jukeboxDB database
      *
      * @param $permission
      * @return n/a
@@ -51,7 +51,7 @@ class PermissionModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new Permission into entityobjectsDB database
+     * Insert a new Permission into jukeboxDB database
      * and return a Permission with new autoincrement
      * primary key
      *
@@ -77,7 +77,7 @@ class PermissionModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a Permission in entityobjectsDB database
+     * Update a Permission in jukeboxDB database
      *
      * @param $permission
      * @return n/a

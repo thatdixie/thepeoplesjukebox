@@ -5,8 +5,8 @@ require_once "DBConstants.php";
  * DBObject is the base class for Database Objects
  * This class contains error and status codes for DBObjects.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  ********************************************************************
  */
 class DBObject implements DBConstants  

@@ -1,16 +1,16 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Contact.php";
 
 /********************************************************************
- * ContactModel inherits EntityObjectsDB and provides functions to
- * map Contact class to entityobjectsDB.
+ * ContactModel inherits JukeboxDB and provides functions to
+ * map Contact class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class ContactModel extends EntityObjectsDB
+class ContactModel extends JukeboxDB
 {
     /*********************************************************
      * Returns a Contact by contactId
@@ -38,7 +38,7 @@ class ContactModel extends EntityObjectsDB
     }
 
     /*********************************************************
-     * Insert a new Contact into entityobjectsDB database
+     * Insert a new Contact into jukeboxDB database
      *
      * @param $contact
      * @return n/a
@@ -78,7 +78,7 @@ class ContactModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Insert a new Contact into entityobjectsDB database
+     * Insert a new Contact into jukeboxDB database
      * and return a Contact with new autoincrement
      * primary key
      *
@@ -122,7 +122,7 @@ class ContactModel extends EntityObjectsDB
 
 
     /*********************************************************
-     * Update a Contact in entityobjectsDB database
+     * Update a Contact in jukeboxDB database
      *
      * @param $contact
      * @return n/a

@@ -3,16 +3,16 @@
 /*************************************************
  * interface defines common constants
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *************************************************
  */
 interface DBConstants 
 {
     //---------------------------------------------
-    // entityobjectsDB parameters for PDO
+    // jukeboxDB parameters for PDO
     //---------------------------------------------
-    const DBNAME    = "entityobjectsDB";
+    const DBNAME    = "jukeboxDB";
     const DBSERVER  = "127.0.0.1";
     const DBPORT    = "3316";
     const DBUSER    = "www";

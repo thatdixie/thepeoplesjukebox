@@ -2,10 +2,10 @@
 require_once "DBObject.php";
 
 /********************************************
- * User_ugroup represents a table in entityobjectsDB 
+ * User_ugroup represents a table in jukeboxDB 
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  ********************************************
  */
 class User_ugroup extends DBObject

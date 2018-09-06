@@ -2,10 +2,10 @@
 require_once "DBObject.php";
 
 /********************************************
- * Contact represents a table in entityobjectsDB 
+ * Contact represents a table in jukeboxDB 
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  ********************************************
  */
 class Contact extends DBObject

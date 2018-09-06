@@ -1,19 +1,19 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require      "Ugroup_permission.php";
 
 /********************************************************************
- * Ugroup_permissionModel inherits EntityObjectsDB and provides functions to
- * map Ugroup_permission class to entityobjectsDB.
+ * Ugroup_permissionModel inherits JukeboxDB and provides functions to
+ * map Ugroup_permission class to jukeboxDB.
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  *********************************************************************
  */
-class Ugroup_permissionModel extends EntityObjectsDB
+class Ugroup_permissionModel extends JukeboxDB
 {
     /*********************************************************
-     * Insert a new Ugroup_permission into entityobjectsDB database
+     * Insert a new Ugroup_permission into jukeboxDB database
      *
      * @param $ugroup_permission
      * @return n/a
@@ -32,22 +32,5 @@ class Ugroup_permissionModel extends EntityObjectsDB
 
         $this->executeQuery($query);
     }
-
-    /*********************************************************
-     * Delete a Ugroup_permission by keys
-     *
-     * @param  $id
-     * @param  $id2
-     *
-     * @return n/a
-     *********************************************************
-     */
-    public function delete($id, $id2)
-    {
-        $query="DELETE FROM ugroup_permission WHERE ugroupId=".$id." AND permissionId=".$id2;
-
-        $this->executeQuery($query);
-    }
-
 }
 ?>    

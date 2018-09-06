@@ -2,10 +2,10 @@
 require_once "DBObject.php";
 
 /********************************************
- * Account represents a table in entityobjectsDB 
+ * Account represents a table in jukeboxDB 
  *
- * @author  mgill
- * @version 180722
+ * @author  megan
+ * @version 180906
  ********************************************
  */
 class Account extends DBObject
