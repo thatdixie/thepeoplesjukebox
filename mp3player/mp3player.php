@@ -8,8 +8,12 @@ siteSession();
 // a very silly implementation of
 // circular queue becasue I'm tired LOL
 //-------------------------------------------
-$mysong = $_SESSION['mysong'];
-$foo    = $mysong."mp3";
+if(isset($_SESSION['mysong']))
+    $mysong = $_SESSION['mysong'];
+else
+    $mysong = 0;
+
+$foo    = $mysong.".mp3";
 
 if($mysong==0)
     $mysong=1;

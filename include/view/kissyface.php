@@ -9,7 +9,7 @@
  * @author megan
  ***********************************
 */			
-function thankyou($header, $url)  
+function kissyface($header, $url)  
 {
 ?>
 <!DOCTYPE html>
@@ -28,6 +28,7 @@ function thankyou($header, $url)
 	<link href="/css/style.css" rel="stylesheet">
     <?php echo("<meta http-equiv=\"Refresh\" content=\"3; url=$url\">"); ?>
   </head>
+  <body>
     <nav class="navbar navbar-default navbar-fixed-top"  style="background-color: black">
       <div class="container">
         <div class="row">
@@ -47,7 +48,6 @@ function thankyou($header, $url)
       </div>
     </nav>
   <br><br>
-  <body>
     <br><br><br><br>
     <section id="header">
       <div class="container">

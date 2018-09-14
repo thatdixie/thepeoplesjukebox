@@ -14,7 +14,7 @@ interface DBConstants
     //---------------------------------------------
     const DBNAME    = "jukeboxDB";
     const DBSERVER  = "127.0.0.1";
-    const DBPORT    = "3316";
+    const DBPORT    = "3306";
     const DBUSER    = "www";
     const DBPASSWORD= "www123";
     const DBDRIVER  = "mysql";
