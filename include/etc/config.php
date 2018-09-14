@@ -7,7 +7,9 @@
 
 function systemEmail()
 {
-    return("mgill@metaqueue.net");
+    $admins = array('mgill@metaqueue.net',
+                    'cyrusface@gmail.com');
+    return($admins);
 }
 
 function pubServerAddress()
@@ -17,7 +19,7 @@ function pubServerAddress()
 
 function smtpConfig()
 {
-    return("/opt/install/PHPMailer.json");
+    return("/opt/install/PHPMailer/PHPMailer.json");
 }
 
 ?>

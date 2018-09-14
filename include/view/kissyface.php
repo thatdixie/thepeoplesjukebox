@@ -28,7 +28,7 @@ function kissyface($header, $url)
           </font>
           <br><br>
           <center>
-            <img src="/images/kiss.jpg">
+            <img src="/images/jukebox.jpeg">
           </center>
         </td></tr>
       </table>

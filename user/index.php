@@ -16,10 +16,13 @@ function stub()
           <hr>					
         <br><br>
         <div class="col-md-10 col-md-offset-1">
-          <h2>Hi! Ima USER!</h2>
-          <p class="lead"`>
-           TODO:
-           make this a user home page for DJ's and users...
+          <h2>Dixie's Jukebox</h2>
+          <p class="lead" style="cursor: pointer;">
+          <a href="javascript:onclick=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234');">
+          <img style="cursor: pointer;" src="/images/jukebox.jpeg" border="0" id="jukebox"/></a><br>
+          <a id="zzz" href="#" ontouchstart="playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234'); return false;">
+          <button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" >Play Me!</button>
+          </a>
           </p>
         </div>
       </div>
