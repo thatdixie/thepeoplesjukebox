@@ -20,7 +20,7 @@ function stub()
           <p class="lead" style="cursor: pointer;">
           <a href="javascript:onclick=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234');">
           <img style="cursor: pointer;" src="/images/jukebox.jpeg" border="0" id="jukebox"/></a><br>
-          <a id="zzz" href="#" ontouchstart="playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234'); return false;">
+          <a href="ontouchstart=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234'); return false;">
           <button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" >Play Me!</button>
           </a>
           </p>

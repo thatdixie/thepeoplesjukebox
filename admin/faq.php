@@ -129,7 +129,7 @@ function moveDown($id)
 //---------------------------------------
 function saveFaq()
 {
-    require_once "../include/view/dbface.php";
+    require_once "../include/view/kissyface.php";
     require_once "../include/model/AdminFaqModel.php";
 
     $faqs = unserialize(getUserSession('FAQ_ARRAY'));
@@ -138,7 +138,7 @@ function saveFaq()
         $faq->faqModified = sqlNow();
     $db->updateAll($faqs);
 
-    dbface("FAQs Saved", "/admin/faq.php");
+    kissyface("FAQs Saved", "/admin/faq.php");
 }
 
 //---------------------------------------

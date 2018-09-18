@@ -9,7 +9,7 @@ function about()
 {
 ?>
   <section id="about">
-    <div class="container" style="text-align:center;color:black;background:grey;">
+    <div class="container">
     <br>
       <h1><b>Jukebox's playing near you!</b></h1>
     <br>
@@ -31,7 +31,6 @@ function about()
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
       </div>
     </div>
-    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/dixie.jpeg" 
@@ -46,10 +45,8 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
-          <br>
       </div>
     </div>             
-    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/ratchel.jpeg" 
@@ -64,10 +61,8 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
-          <br>
       </div>
     </div>
-    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/dave.jpeg" 
@@ -82,10 +77,8 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
           <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
-          <br>
       </div>
-    </div>
-    <br><br>
+    </div>            
     <div class="container">
       <div class="left">
         <img src="/images/alicia.jpeg" 
@@ -100,7 +93,6 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
           <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
-          <br>
       </div>
     </div>        
   </section>
