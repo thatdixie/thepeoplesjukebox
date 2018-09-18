@@ -1,0 +1,119 @@
+<?php
+$root = "/home/mgill/www/entityobjects";
+require_once $root."/include/etc/sql.php";
+require_once "EntityObjectsDB.php";
+require_once "UserModel.php";
+require_once "User.php";
+
+/********************************************************************
+ * UserLoginModel inherits UserModel 
+ * and provides function to validate user login
+ *
+ * @author  mgill
+ * @version 180626
+ *********************************************************************
+ */
+class UserLoginModel extends UserModel
+{
+    /*********************************************************
+     * Returns a User for $username and $password
+     *
+     * @param  string $username
+     * @param  string $password 
+     * @return array  $user
+     *********************************************************
+     */
+    public function findUserLogin($username, $password)
+    {
+        $username        = $this->sqlSafe($username);
+
+        $query= <<<EOF
+
+	    SELECT
+	        userId,
+	        accountId,
+	        userName,
+	        userPassword,
+	        userFirstName,
+	        userLastName,
+	        userLastLogin,
+	        userCreated,
+	        userModified,
+        userStatus 
+	    FROM 
+	        user 
+	    WHERE 
+	        userName='{$username}' 
+        AND userStatus = 'ACTIVE' 
+EOF;
+        $r = $this->selectDB($query, "User");
+        if($r)
+        {
+            $user = $r[0];
+            if(!password_verify($password, $user->userPassword))
+                $user = null;
+        }
+        else
+        {
+            $user = null;
+        }
+        return($user);
+    }
+
+
+    /*********************************************************
+     * Insert a new User
+     *
+     * @param  class $user
+     * @return class $user -- with updated userId
+     *********************************************************
+     */
+    public function insertUserLogin($user)
+    {
+        $username        = blacklistSafe($user->userName);
+        $encryptPassword = $this->encrypt(blacklistSafe($user->userPassword)); 
+	
+        $query="INSERT INTO user ( ".
+	                       "userId,".
+                           "accountId,".
+                           "userName,".
+                           "userPassword,".
+                           "userFirstName,".
+                           "userLastName,".
+                           "userLastLogin,".
+                           "userCreated,".
+                           "userModified,".
+                           "userStatus ".                      
+                           ")".
+               "VALUES (".
+                      "null,".
+                      " ".$user->accountId." ,".
+                      "'".$this->sqlSafe($username)."',".
+                      "'".$encryptPassword."',".
+                      "'".$this->sqlSafe($user->userFirstName)."',".
+                      "'".$this->sqlSafe($user->userLastName)."',".
+                      "'".$this->sqlSafe($user->userLastLogin)."',".
+                      "'".$this->sqlSafe($user->userCreated)."',".
+                      "'".$this->sqlSafe($user->userModified)."',".
+                      "'".$this->sqlSafe($user->userStatus)."' ".                      
+                      ")"; 
+
+        $id = $this->executeInsert($query);
+	    $user->userId = $id;
+        return($user);
+    }
+
+    
+    /*********************************************************
+     * Returns an AES encrypted binary string 
+     *
+     * @param  string $str
+     * @return string $aes
+     *********************************************************
+     */
+    public function encrypt($str)
+    {
+	    return(password_hash($str, PASSWORD_DEFAULT));
+    }
+}
+?>
