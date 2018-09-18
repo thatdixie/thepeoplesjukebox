@@ -29,6 +29,7 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
+          <br>
       </div>
     </div>
     <div class="container">
@@ -45,6 +46,7 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
+          <br>
       </div>
     </div>             
     <div class="container">
@@ -61,6 +63,7 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
+          <br>
       </div>
     </div>
     <div class="container">
@@ -77,6 +80,7 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
           <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
+          <br>
       </div>
     </div>            
     <div class="container">
@@ -93,6 +97,7 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
           <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
+          <br>
       </div>
     </div>        
   </section>
