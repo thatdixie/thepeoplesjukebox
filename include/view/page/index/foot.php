@@ -8,6 +8,7 @@
 function foot()  
 {
 ?>
+
   <footer id="footer" class="midnight-blue" style="background-color: black">
     <div class="container">
       <div class="row">

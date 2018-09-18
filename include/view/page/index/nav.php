@@ -8,7 +8,7 @@
 function nav()
 {
 ?>
-    <nav class="navbar navbar-default navbar-fixed-top"  style="background-color: black">
+    <nav class="navbar navbar-default navbar-fixed-top"  style="background:black;">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -24,7 +24,7 @@ function nav()
               </button>
             </div>
             <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right" style="background-color: black" style="color: white">
+              <ul class="nav navbar-nav navbar-right" style="color:white;background:black;">
                 <li><a href="#why">What Why How?</a></li>
                 <li><a href="/signup/">Be a Jukebox</a></li>
                 <li><a href="/signup/">Find a Jukebox</a></li>

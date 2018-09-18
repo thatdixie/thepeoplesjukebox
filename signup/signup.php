@@ -14,7 +14,7 @@ if(isCaptchaOK())
     // CAPTCHA validated...
     //------------------------------
     require_once "../include/etc/notify.php";
-    
+
     systemNotify("There was a signup");
     kissyface("Thank You!", "/user/");
 }
