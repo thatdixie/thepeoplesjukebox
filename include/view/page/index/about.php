@@ -29,9 +29,9 @@ function about()
         </h3> &nbsp;
 	    <a href="#">
 	      <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
-          <br>
       </div>
     </div>
+    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/dixie.jpeg" 
@@ -49,6 +49,7 @@ function about()
           <br>
       </div>
     </div>             
+    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/ratchel.jpeg" 
@@ -66,6 +67,7 @@ function about()
           <br>
       </div>
     </div>
+    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/dave.jpeg" 
@@ -82,7 +84,8 @@ function about()
           <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a>
           <br>
       </div>
-    </div>            
+    </div>
+    <br><br>
     <div class="container">
       <div class="left">
         <img src="/images/alicia.jpeg" 
