@@ -8,7 +8,7 @@
 function nav()
 {
 ?>
-    <nav class="navbar navbar-default navbar-fixed-top"  style="background:black;">
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: black" style="color: white">
       <div class="container">
         <div class="row">
           <div class="col-md-4">
@@ -18,7 +18,7 @@ function nav()
           </div>					  
 
           <div class="col-md-8">	 
-            <div class="navbar-header">
+            <div class="navbar-header" style="background-color: black" style="color: white">
               <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target="#menu">
                 <i class="fa fa-bars"></i>
               </button>
