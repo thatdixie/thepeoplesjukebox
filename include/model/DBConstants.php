@@ -4,7 +4,7 @@
  * interface defines common constants
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *************************************************
  */
 interface DBConstants 

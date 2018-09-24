@@ -7,7 +7,7 @@ require      "Ugroup_permission.php";
  * map Ugroup_permission class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class Ugroup_permissionModel extends JukeboxDB

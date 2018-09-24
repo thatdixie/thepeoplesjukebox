@@ -6,7 +6,7 @@ require_once "DBConstants.php";
  * This class contains error and status codes for DBObjects.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  ********************************************************************
  */
 class DBObject implements DBConstants  

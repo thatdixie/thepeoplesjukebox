@@ -2,21 +2,27 @@
 require_once "DBObject.php";
 
 /********************************************
- * User_ugroup represents a table in jukeboxDB 
+ * Playlist represents a table in jukeboxDB 
  *
  * @author  megan
  * @version 180924
  ********************************************
  */
-class User_ugroup extends DBObject
+class Playlist extends DBObject
 {    
+    public $playlistId=0;
     public $userId=0;
-    public $ugroupId=0;
+    public $mediaId=0;
+    public $playlistUserId=0;
+    public $playlistOrder=0;
+    public $playlistCreated="";
+    public $playlistModified="";
+    public $playlistStatus="";
 
 
 
     /*****************************************************
-     * Returns an HTTP parameter list for User_ugroup object
+     * Returns an HTTP parameter list for Playlist object
      *
      * @return
      *****************************************************
@@ -24,15 +30,21 @@ class User_ugroup extends DBObject
     public function makeHTTPParameters()
     {    
         $b ="&";
+        $b.="playlistId=".$this->playlistId."&";
         $b.="userId=".$this->userId."&";
-        $b.="ugroupId=".$this->ugroupId."&";
+        $b.="mediaId=".$this->mediaId."&";
+        $b.="playlistUserId=".$this->playlistUserId."&";
+        $b.="playlistOrder=".$this->playlistOrder."&";
+        $b.="playlistCreated=".$this->playlistCreated."&";
+        $b.="playlistModified=".$this->playlistModified."&";
+        $b.="playlistStatus=".$this->playlistStatus."&";
         return($b);
 
 
     }
 
     /**************************************************************
-     * Returns a JSON encoded representation of the User_ugroup object
+     * Returns a JSON encoded representation of the Playlist object
      *
      * @return JSON
      **************************************************************
@@ -43,13 +55,13 @@ class User_ugroup extends DBObject
     }
 
     /******************************************************
-     * Construct a User_ugroup from a JSONObject.
+     * Construct a Playlist from a JSONObject.
      *
      * @param json
      *        A JSONObject.
      ******************************************************
      */
-    function User_ugroup($jsonString='')
+    function Playlist($jsonString='')
     {
         //--------------------------------------------------------------------
         // I'm basically OK with being quiet on missing JSON property names
@@ -59,8 +71,14 @@ class User_ugroup extends DBObject
 
         if($json = $this->getJSON($jsonString) )
         {        
+        $this->playlistId= $json['playlistId'];
         $this->userId= $json['userId'];
-        $this->ugroupId= $json['ugroupId'];
+        $this->mediaId= $json['mediaId'];
+        $this->playlistUserId= $json['playlistUserId'];
+        $this->playlistOrder= $json['playlistOrder'];
+        $this->playlistCreated= $json['playlistCreated'];
+        $this->playlistModified= $json['playlistModified'];
+        $this->playlistStatus= $json['playlistStatus'];
 
         }
     }

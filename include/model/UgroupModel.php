@@ -7,7 +7,7 @@ require      "Ugroup.php";
  * map Ugroup class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class UgroupModel extends JukeboxDB

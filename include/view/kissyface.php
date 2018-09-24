@@ -50,12 +50,14 @@ function kissyface($header, $url)
   <br><br>
     <br><br><br><br>
     <section id="header">
+      <br><br>
       <div class="container">
         <div class="center">
+          <hr>
+          <br><br>
           <h2>
             <?php echo($header); ?>
           </h2>
-          <br><br>
           <div class="col-md-10 col-md-offset-4">
             <img src="/images/jukebox.jpeg" alt="Jukebox" width="350" height="400">
           </div>

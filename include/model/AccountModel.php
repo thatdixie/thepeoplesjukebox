@@ -7,7 +7,7 @@ require      "Account.php";
  * map Account class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class AccountModel extends JukeboxDB

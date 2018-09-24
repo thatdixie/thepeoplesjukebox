@@ -7,7 +7,7 @@ require      "User.php";
  * map User class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class UserModel extends JukeboxDB
@@ -24,8 +24,17 @@ class UserModel extends JukeboxDB
                       "accountId,".
                       "userName,".
                       "userPassword,".
+                      "userPasscode,".
                       "userFirstName,".
                       "userLastName,".
+                      "userIsJukebox,".
+                      "userNickName,".
+                      "userLikes,".
+                      "userWorkplace,".
+                      "userWorkHours,".
+                      "userPhoto,".
+                      "userLongitude,".
+                      "userLatitude,".
                       "userLastLogin,".
                       "userCreated,".
                       "userModified,".
@@ -50,8 +59,17 @@ class UserModel extends JukeboxDB
                       "accountId,".
                       "userName,".
                       "userPassword,".
+                      "userPasscode,".
                       "userFirstName,".
                       "userLastName,".
+                      "userIsJukebox,".
+                      "userNickName,".
+                      "userLikes,".
+                      "userWorkplace,".
+                      "userWorkHours,".
+                      "userPhoto,".
+                      "userLongitude,".
+                      "userLatitude,".
                       "userLastLogin,".
                       "userCreated,".
                       "userModified,".
@@ -62,8 +80,17 @@ class UserModel extends JukeboxDB
                       " ".$user->accountId." ,".
                       "'".$this->sqlSafe($user->userName)."',".
                       "'".$this->sqlSafe($user->userPassword)."',".
+                      "'".$this->sqlSafe($user->userPasscode)."',".
                       "'".$this->sqlSafe($user->userFirstName)."',".
                       "'".$this->sqlSafe($user->userLastName)."',".
+                      "'".$this->sqlSafe($user->userIsJukebox)."',".
+                      "'".$this->sqlSafe($user->userNickName)."',".
+                      "'".$this->sqlSafe($user->userLikes)."',".
+                      "'".$this->sqlSafe($user->userWorkplace)."',".
+                      "'".$this->sqlSafe($user->userWorkHours)."',".
+                      "'".$this->sqlSafe($user->userPhoto)."',".
+                      "'".$this->sqlSafe($user->userLongitude)."',".
+                      "'".$this->sqlSafe($user->userLatitude)."',".
                       "'".$this->sqlSafe($user->userLastLogin)."',".
                       "'".$this->sqlSafe($user->userCreated)."',".
                       "'".$this->sqlSafe($user->userModified)."',".
@@ -90,8 +117,17 @@ class UserModel extends JukeboxDB
                       "accountId,".
                       "userName,".
                       "userPassword,".
+                      "userPasscode,".
                       "userFirstName,".
                       "userLastName,".
+                      "userIsJukebox,".
+                      "userNickName,".
+                      "userLikes,".
+                      "userWorkplace,".
+                      "userWorkHours,".
+                      "userPhoto,".
+                      "userLongitude,".
+                      "userLatitude,".
                       "userLastLogin,".
                       "userCreated,".
                       "userModified,".
@@ -102,8 +138,17 @@ class UserModel extends JukeboxDB
                       " ".$user->accountId." ,".
                       "'".$this->sqlSafe($user->userName)."',".
                       "'".$this->sqlSafe($user->userPassword)."',".
+                      "'".$this->sqlSafe($user->userPasscode)."',".
                       "'".$this->sqlSafe($user->userFirstName)."',".
                       "'".$this->sqlSafe($user->userLastName)."',".
+                      "'".$this->sqlSafe($user->userIsJukebox)."',".
+                      "'".$this->sqlSafe($user->userNickName)."',".
+                      "'".$this->sqlSafe($user->userLikes)."',".
+                      "'".$this->sqlSafe($user->userWorkplace)."',".
+                      "'".$this->sqlSafe($user->userWorkHours)."',".
+                      "'".$this->sqlSafe($user->userPhoto)."',".
+                      "'".$this->sqlSafe($user->userLongitude)."',".
+                      "'".$this->sqlSafe($user->userLatitude)."',".
                       "'".$this->sqlSafe($user->userLastLogin)."',".
                       "'".$this->sqlSafe($user->userCreated)."',".
                       "'".$this->sqlSafe($user->userModified)."',".
@@ -131,8 +176,17 @@ class UserModel extends JukeboxDB
                       "accountId= ".$user->accountId." ,".
                       "userName='".$this->sqlSafe($user->userName)."',".
                       "userPassword='".$this->sqlSafe($user->userPassword)."',".
+                      "userPasscode='".$this->sqlSafe($user->userPasscode)."',".
                       "userFirstName='".$this->sqlSafe($user->userFirstName)."',".
                       "userLastName='".$this->sqlSafe($user->userLastName)."',".
+                      "userIsJukebox='".$this->sqlSafe($user->userIsJukebox)."',".
+                      "userNickName='".$this->sqlSafe($user->userNickName)."',".
+                      "userLikes='".$this->sqlSafe($user->userLikes)."',".
+                      "userWorkplace='".$this->sqlSafe($user->userWorkplace)."',".
+                      "userWorkHours='".$this->sqlSafe($user->userWorkHours)."',".
+                      "userPhoto='".$this->sqlSafe($user->userPhoto)."',".
+                      "userLongitude='".$this->sqlSafe($user->userLongitude)."',".
+                      "userLatitude='".$this->sqlSafe($user->userLatitude)."',".
                       "userLastLogin='".$this->sqlSafe($user->userLastLogin)."',".
                       "userCreated='".$this->sqlSafe($user->userCreated)."',".
                       "userModified='".$this->sqlSafe($user->userModified)."',".

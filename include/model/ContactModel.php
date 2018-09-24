@@ -7,7 +7,7 @@ require      "Contact.php";
  * map Contact class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class ContactModel extends JukeboxDB

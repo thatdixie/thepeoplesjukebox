@@ -2,21 +2,29 @@
 require_once "DBObject.php";
 
 /********************************************
- * User_ugroup represents a table in jukeboxDB 
+ * Media represents a table in jukeboxDB 
  *
  * @author  megan
  * @version 180924
  ********************************************
  */
-class User_ugroup extends DBObject
+class Media extends DBObject
 {    
+    public $mediaId=0;
     public $userId=0;
-    public $ugroupId=0;
+    public $mediaFile="";
+    public $mediaArtist="";
+    public $mediaTitle="";
+    public $mediaYear="";
+    public $mediaDuration="";
+    public $mediaCreated="";
+    public $mediaModified="";
+    public $mediaStatus="";
 
 
 
     /*****************************************************
-     * Returns an HTTP parameter list for User_ugroup object
+     * Returns an HTTP parameter list for Media object
      *
      * @return
      *****************************************************
@@ -24,15 +32,23 @@ class User_ugroup extends DBObject
     public function makeHTTPParameters()
     {    
         $b ="&";
+        $b.="mediaId=".$this->mediaId."&";
         $b.="userId=".$this->userId."&";
-        $b.="ugroupId=".$this->ugroupId."&";
+        $b.="mediaFile=".$this->mediaFile."&";
+        $b.="mediaArtist=".$this->mediaArtist."&";
+        $b.="mediaTitle=".$this->mediaTitle."&";
+        $b.="mediaYear=".$this->mediaYear."&";
+        $b.="mediaDuration=".$this->mediaDuration."&";
+        $b.="mediaCreated=".$this->mediaCreated."&";
+        $b.="mediaModified=".$this->mediaModified."&";
+        $b.="mediaStatus=".$this->mediaStatus."&";
         return($b);
 
 
     }
 
     /**************************************************************
-     * Returns a JSON encoded representation of the User_ugroup object
+     * Returns a JSON encoded representation of the Media object
      *
      * @return JSON
      **************************************************************
@@ -43,13 +59,13 @@ class User_ugroup extends DBObject
     }
 
     /******************************************************
-     * Construct a User_ugroup from a JSONObject.
+     * Construct a Media from a JSONObject.
      *
      * @param json
      *        A JSONObject.
      ******************************************************
      */
-    function User_ugroup($jsonString='')
+    function Media($jsonString='')
     {
         //--------------------------------------------------------------------
         // I'm basically OK with being quiet on missing JSON property names
@@ -59,8 +75,16 @@ class User_ugroup extends DBObject
 
         if($json = $this->getJSON($jsonString) )
         {        
+        $this->mediaId= $json['mediaId'];
         $this->userId= $json['userId'];
-        $this->ugroupId= $json['ugroupId'];
+        $this->mediaFile= $json['mediaFile'];
+        $this->mediaArtist= $json['mediaArtist'];
+        $this->mediaTitle= $json['mediaTitle'];
+        $this->mediaYear= $json['mediaYear'];
+        $this->mediaDuration= $json['mediaDuration'];
+        $this->mediaCreated= $json['mediaCreated'];
+        $this->mediaModified= $json['mediaModified'];
+        $this->mediaStatus= $json['mediaStatus'];
 
         }
     }

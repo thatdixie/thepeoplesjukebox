@@ -5,7 +5,7 @@ require_once "DBObject.php";
  * User represents a table in jukeboxDB 
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  ********************************************
  */
 class User extends DBObject
@@ -14,8 +14,17 @@ class User extends DBObject
     public $accountId=0;
     public $userName="";
     public $userPassword="";
+    public $userPasscode="";
     public $userFirstName="";
     public $userLastName="";
+    public $userIsJukebox="";
+    public $userNickName="";
+    public $userLikes="";
+    public $userWorkplace="";
+    public $userWorkHours="";
+    public $userPhoto="";
+    public $userLongitude="";
+    public $userLatitude="";
     public $userLastLogin="";
     public $userCreated="";
     public $userModified="";
@@ -36,8 +45,17 @@ class User extends DBObject
         $b.="accountId=".$this->accountId."&";
         $b.="userName=".$this->userName."&";
         $b.="userPassword=".$this->userPassword."&";
+        $b.="userPasscode=".$this->userPasscode."&";
         $b.="userFirstName=".$this->userFirstName."&";
         $b.="userLastName=".$this->userLastName."&";
+        $b.="userIsJukebox=".$this->userIsJukebox."&";
+        $b.="userNickName=".$this->userNickName."&";
+        $b.="userLikes=".$this->userLikes."&";
+        $b.="userWorkplace=".$this->userWorkplace."&";
+        $b.="userWorkHours=".$this->userWorkHours."&";
+        $b.="userPhoto=".$this->userPhoto."&";
+        $b.="userLongitude=".$this->userLongitude."&";
+        $b.="userLatitude=".$this->userLatitude."&";
         $b.="userLastLogin=".$this->userLastLogin."&";
         $b.="userCreated=".$this->userCreated."&";
         $b.="userModified=".$this->userModified."&";
@@ -79,8 +97,17 @@ class User extends DBObject
         $this->accountId= $json['accountId'];
         $this->userName= $json['userName'];
         $this->userPassword= $json['userPassword'];
+        $this->userPasscode= $json['userPasscode'];
         $this->userFirstName= $json['userFirstName'];
         $this->userLastName= $json['userLastName'];
+        $this->userIsJukebox= $json['userIsJukebox'];
+        $this->userNickName= $json['userNickName'];
+        $this->userLikes= $json['userLikes'];
+        $this->userWorkplace= $json['userWorkplace'];
+        $this->userWorkHours= $json['userWorkHours'];
+        $this->userPhoto= $json['userPhoto'];
+        $this->userLongitude= $json['userLongitude'];
+        $this->userLatitude= $json['userLatitude'];
         $this->userLastLogin= $json['userLastLogin'];
         $this->userCreated= $json['userCreated'];
         $this->userModified= $json['userModified'];

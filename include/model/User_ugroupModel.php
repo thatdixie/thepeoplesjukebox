@@ -7,7 +7,7 @@ require      "User_ugroup.php";
  * map User_ugroup class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class User_ugroupModel extends JukeboxDB

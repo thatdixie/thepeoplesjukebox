@@ -7,7 +7,7 @@ require      "Permission.php";
  * map Permission class to jukeboxDB.
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  *********************************************************************
  */
 class PermissionModel extends JukeboxDB

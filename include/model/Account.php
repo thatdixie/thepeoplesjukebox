@@ -5,7 +5,7 @@ require_once "DBObject.php";
  * Account represents a table in jukeboxDB 
  *
  * @author  megan
- * @version 180906
+ * @version 180924
  ********************************************
  */
 class Account extends DBObject
