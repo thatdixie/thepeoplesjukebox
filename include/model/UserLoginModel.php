@@ -10,8 +10,8 @@ require_once "Ugroup.php";
  * UserLoginModel inherits UserModel 
  * and provides function to validate user login
  *
- * @author  mgill
- * @version 180626
+ * @author  megan
+ * @version 180924
  *********************************************************************
  */
 class UserLoginModel extends UserModel
@@ -26,19 +26,28 @@ class UserLoginModel extends UserModel
     {
         $query= <<<EOF
 
-	    SELECT
-	        userId,
-	        accountId,
-	        userName,
-	        userPassword,
-	        userFirstName,
-	        userLastName,
-	        userLastLogin,
-	        userCreated,
-	        userModified,
-            userStatus 
+        SELECT        
+            userId,
+            accountId,
+            userName,
+            userPassword,
+            userPasscode,
+            userFirstName,
+            userLastName,
+            userIsJukebox,
+            userNickName,
+            userLikes,
+            userWorkplace,
+            userWorkHours,
+            userPhoto,
+            userLongitude,
+            userLatitude,
+            userLastLogin,
+            userCreated,
+            userModified,
+            userStatus                      		               
 	    FROM 
-	        user 
+            user 
 EOF;
         return($this->selectDB($query, "User"));
     }
@@ -59,16 +68,25 @@ EOF;
         $query= <<<EOF
 
 	    SELECT
-	        userId,
-	        accountId,
-	        userName,
-	        userPassword,
-	        userFirstName,
-	        userLastName,
-	        userLastLogin,
-	        userCreated,
-	        userModified,
-        userStatus 
+            userId,
+            accountId,
+            userName,
+            userPassword,
+            userPasscode,
+            userFirstName,
+            userLastName,
+            userIsJukebox,
+            userNickName,
+            userLikes,
+            userWorkplace,
+            userWorkHours,
+            userPhoto,
+            userLongitude,
+            userLatitude,
+            userLastLogin,
+            userCreated,
+            userModified,
+            userStatus
 	    FROM 
 	        user 
 	    WHERE 
@@ -109,16 +127,25 @@ EOF;
         $query= <<<EOF
 
 	    SELECT
-	        userId,
-	        accountId,
-	        userName,
-	        userPassword,
-	        userFirstName,
-	        userLastName,
-	        userLastLogin,
-	        userCreated,
-	        userModified,
-            userStatus 
+            userId,
+            accountId,
+            userName,
+            userPassword,
+            userPasscode,
+            userFirstName,
+            userLastName,
+            userIsJukebox,
+            userNickName,
+            userLikes,
+            userWorkplace,
+            userWorkHours,
+            userPhoto,
+            userLongitude,
+            userLatitude,
+            userLastLogin,
+            userCreated,
+            userModified,
+            userStatus
 	    FROM 
 	        user 
 	    WHERE 
@@ -153,26 +180,44 @@ EOF;
     {
         $username        = blacklistSafe($user->userName);
         $encryptPassword = $this->encrypt(blacklistSafe($user->userPassword)); 
-	
+
         $query="INSERT INTO user ( ".
-	                       "userId,".
-                           "accountId,".
-                           "userName,".
-                           "userPassword,".
-                           "userFirstName,".
-                           "userLastName,".
-                           "userLastLogin,".
-                           "userCreated,".
-                           "userModified,".
-                           "userStatus ".                      
+	                  "userId,".
+                      "accountId,".
+                      "userName,".
+                      "userPassword,".
+                      "userPasscode,".
+                      "userFirstName,".
+                      "userLastName,".
+                      "userIsJukebox,".
+                      "userNickName,".
+                      "userLikes,".
+                      "userWorkplace,".
+                      "userWorkHours,".
+                      "userPhoto,".
+                      "userLongitude,".
+                      "userLatitude,".
+                      "userLastLogin,".
+                      "userCreated,".
+                      "userModified,".
+                      "userStatus ".                      
                            ")".
                "VALUES (".
                       "null,".
                       " ".$user->accountId." ,".
-                      "'".$this->sqlSafe($username)."',".
-                      "'".$encryptPassword."',".
+                      "'".$this->sqlSafe($user->userName)."',".
+                      "'".$this->sqlSafe($user->userPassword)."',".
+                      "'".$this->sqlSafe($user->userPasscode)."',".
                       "'".$this->sqlSafe($user->userFirstName)."',".
                       "'".$this->sqlSafe($user->userLastName)."',".
+                      "'".$this->sqlSafe($user->userIsJukebox)."',".
+                      "'".$this->sqlSafe($user->userNickName)."',".
+                      "'".$this->sqlSafe($user->userLikes)."',".
+                      "'".$this->sqlSafe($user->userWorkplace)."',".
+                      "'".$this->sqlSafe($user->userWorkHours)."',".
+                      "'".$this->sqlSafe($user->userPhoto)."',".
+                      "'".$this->sqlSafe($user->userLongitude)."',".
+                      "'".$this->sqlSafe($user->userLatitude)."',".
                       "'".$this->sqlSafe($user->userLastLogin)."',".
                       "'".$this->sqlSafe($user->userCreated)."',".
                       "'".$this->sqlSafe($user->userModified)."',".
