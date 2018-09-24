@@ -14,7 +14,7 @@ function systemEmail()
 
 function pubServerAddress()
 {
-    return("http://jukebox.thatdixie.com");
+    return("http://thepeoplesjukebox.com");
 }
 
 function smtpConfig()
