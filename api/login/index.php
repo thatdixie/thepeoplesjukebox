@@ -14,9 +14,8 @@
 */
 $root = realpath($_SERVER["DOCUMENT_ROOT"]);
 require_once $root."/include/etc/session.php";
-require_once $root."/include/etc/sql.php";
-require_once $root."/include/model/UserModel.php";
-require_once $root."/include/model/UserPermissionsModel.php";
+require_once $root."/include/etc/random.php";
+require_once $root."/include/etc/json.php";
 require_once $root."/include/model/UserLoginModel.php";
 
 $username = getRequest('username');
@@ -25,34 +24,24 @@ $password = getRequest('password');
 if($username && $password)
 {
     $db     = new UserLoginModel();
-    $apiUser= new ApiUser();
     
     if(($user = $db->findUserLogin($username, $password)))
     {
-        $apiUser->login     = $user->userName;
-        $apiUser->firstName = $user->userFirstName;
-	    $apiUser->lastName  = $user->userLastName;
-	    $apiUser->status    = $user->userStatus;
-	    $apiUser->lastLogin = $user->userLastLogin;
-        $apiUser->userId    = $user->userId;
+        //-------------------------------------
+        // Generate a passcode so that
+        // future API requests may use
+        // username/passcode
+        //-------------------------------------
+        $user->userPasscode = randomString(10);
+        $db->update($user);
 
-        $db = new UserPermissionsModel();
-        $permissions = $db->findUserPermissions($apiUser->userId);
-
-        $apiUser->isJukebox = false;
-        foreach($permissions as $permission)
-        {
-            if($permission->permissionName == "isJukebox")
-                $apiUser->isJukebox = true;
-        }
-
-        jsonResponse($apiUser->makeJson());
+        jsonResponse($user->makeJson());
+        error_log($user->makeJson(),0);
     }
     else
     {
-        jsonResponse($apiUser->makeJsonError("User Not Found"));
+        jsonErrorResponse("404", "User Not Found");
     }
 }
-
 
 ?>
