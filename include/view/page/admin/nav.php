@@ -13,7 +13,12 @@ function nav()
         <div class="row">
           <div class="col-md-4">
             <div class="site-logo">
+              <?php if(isAdminLoginOK()) { echo "\n"; ?>
+              <a href="/" class="brand" style="color: white">TPJ Admin</a>
+              <?php } echo "\n"; ?>
+              <?php if(!isAdminLoginOK()) { echo "\n"; ?>
               <a href="/" class="brand" style="color: white">The Peoples Jukebox</a>
+              <?php } echo "\n"; ?>
             </div>
           </div>					  
           <div class="col-md-8">	 
@@ -25,12 +30,15 @@ function nav()
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black" style="color: white">
                 <?php if(isAdminLoginOK()) { echo "\n"; ?>
+                <li><a href="/user/">Jukebox</a></li>
                 <li><a href="/admin/">Inbox</a></li>
                 <li><a href="/admin/faq.php">FAQ-CMS</a></li>
                 <?php if(hasPermission('canUserEdit')) { echo "\n"; ?>
                 <li><a href="/admin/users.php/">User-Admin</a></li>
                 <?php } echo "\n"; ?>
-                <li class="dropdown">
+                <!-- <li><a class="dropdown-item" href="/admin/index.php?func=chpassword">Change Password</a></li> -->
+                 <li><a class="dropdown-item" href="/admin/index.php?func=logout">Logout</a></li>
+                <!-- <li class="dropdown">
                   <a class="dropdown-toggle " href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Account-Options <span class="caret"></span>
                   </a>
@@ -38,7 +46,7 @@ function nav()
                     <li><a class="dropdown-item" href="/admin/index.php?func=chpassword">Change Password</a></li>
                     <li><a class="dropdown-item" href="/admin/index.php?func=logout">Logout</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <?php } echo "\n"; ?>
               </ul>
             </div>

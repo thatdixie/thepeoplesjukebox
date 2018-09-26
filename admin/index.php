@@ -9,6 +9,7 @@ siteSession();
 
 if(isAdminLoginOK())
 {
+    
     $func  = getRequest('func');
     $id    = getRequest('id');
     
@@ -78,6 +79,17 @@ else
 //---------------------------------------
 function adminPage()
 {
+    if(!hasPermission("canPublish")
+    && !hasPermission("canUserEdit")
+    && !hasPermission("canContentEdit"))
+    {
+        //-----------------------------------------
+        // You're not a site admin go to regular
+        // user page.
+        //-----------------------------------------
+        redirect("/user/");
+    }
+
     require_once "../include/model/AdminContactModel.php";
 
     $db       = new AdminContactModel();

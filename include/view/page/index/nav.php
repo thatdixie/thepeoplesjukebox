@@ -26,8 +26,8 @@ function nav()
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black" style="color: white">
                 <li><a href="#why">What Why How?</a></li>
-                <li><a href="/signup/">Be a Jukebox</a></li>
-                <li><a href="/signup/">Find a Jukebox</a></li>
+                <li><a href="/user/">Be a Jukebox</a></li>
+                <li><a href="/user/">Find a Jukebox</a></li>
                 <li><a href="/signup/">Signup</a></li>
                 <li><a href="/login/">Login</a></li>
               </ul>

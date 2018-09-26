@@ -2,7 +2,7 @@
 //---------------------------------
 // load admin/page
 //----------------------------------
-require_once "../include/view/page/admin/indexIncludeFiles.inc";
+require_once "../include/view/page/admin/indexIncludeFiles.php";
 require_once "../include/etc/session.php";
 require_once "../include/controller/admin/admin.php";
 siteSession();
@@ -47,7 +47,7 @@ function activateUser()
         
         if($db->resetUserLogin($username, $password, $resetCode))
         {
-            redirect("/admin/");
+            redirect("/login/");
             return;
         }
     }

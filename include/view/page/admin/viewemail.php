@@ -26,10 +26,10 @@ function viewPasswordResetEmail($user, $resetCode)
         {$user->userFirstName} {$user->userLastName}, your password has been reset
       </p> 
       <p class="lead">
-       Your metaQ.io username is <b>{$user->userName}</b>
+       Your username is <b>{$user->userName}</b>
       </p>
       <p class="lead">
-        This is what you have to do next to re-activate yourself as a metaQ.io user:<br>
+        This is what you have to do next to re-activate yourself as a user:<br>
         Click the following link to re-create your password using this login code<br><br>
         <b>$resetCode</b>
       </p>
@@ -68,10 +68,10 @@ function viewUserActivateEmail($user, $resetCode)
         {$user->userFirstName} {$user->userLastName}, Congratulations!
       </p> 
       <p class="lead">
-       Your metaQ.io username is <b>{$user->userName}</b>
+       Your username is <b>{$user->userName}</b>
       </p>
       <p class="lead">
-        This is what you have to do next to activate yourself as a metaQ.io user:<br>
+        This is what you have to do next to activate yourself as a user:<br>
         Click the following link to create your password using this login code<br><br>
         <b>$resetCode</b>
       </p>
@@ -131,11 +131,11 @@ function emailFoot($user)
     $pubserver   = pubServerAddress();
     $emailString = <<<EOF
 
-  <footer id="footer" class="midnight-blue">
+<!--  <footer id="footer" class="midnight-blue">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          &copy; 2018 metaQ.io  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;
           <a href="{$pubserver}/login/activate.php?unsubscribe=yes&userid={$user->userId}&first={$user->userFirstName}&last={$user->userLastName}&username={$user->userName}">unsubscribe</a>
         </div>
         <div class="top-bar">			
@@ -146,10 +146,10 @@ function emailFoot($user)
         </div>
       </div>
     </div>
-
+-->
 </body>
 </html>
-    
+ 
 EOF;
 
     return($emailString);
@@ -164,12 +164,12 @@ function emailFoot2()
 {
     $pubserver   = pubServerAddress();
     $emailString = <<<EOF
-
+<!--
   <footer id="footer" class="midnight-blue">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          &copy; 2018 metaQ.io  &nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;
         </div>
         <div class="top-bar">			
           <div class="col-lg-12">
@@ -179,7 +179,7 @@ function emailFoot2()
         </div>
       </div>
     </div>
-
+-->
 </body>
 </html>
     
@@ -238,7 +238,7 @@ p {
 .btn-primary:hover, 
 .btn-primary:focus{
   background: #fff;
-  color:#6E9DAF;
+  color:#FFFFFF;
   outline: solid;
   box-shadow: none;
 } 
@@ -251,7 +251,7 @@ p {
 }
 
 .site-logo a.brand {
-	color: #6E9DAF;	
+	color: #FFFFFF;	
 	font-size: 30px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 900;
@@ -329,7 +329,7 @@ p {
 .navbar-fixed-top.nav li.active {
     outline: 0;
   
-	color:#6E9DAF ;
+	color:#FFFFFF ;
 }
 
 .navbar-toggle {
@@ -360,7 +360,7 @@ p {
 }
 
 #carousel-slider a i {
-  border: 1px solid #6E9DAF;;
+  border: 1px solid #FFFFFF;;
   border-radius:50%;
   font-size: 30px;
   height: 50px;
@@ -369,13 +369,13 @@ p {
   top: 50%;
   width: 50px;
   color:#fff;
-   background:#6E9DAF;
+   background:#FFFFFF;
 }
 
 #carousel-slider a i:hover {
-  background:#6E9DAF;
+  background:#FFFFFF;
   color:#fff;
-  border: 1px solid #6E9DAF;
+  border: 1px solid #FFFFFF;
 }
 
 #carousel-slider 
@@ -448,8 +448,8 @@ p {
 .portfolio-filter > li a:hover,
 .portfolio-filter > li a.active{
   color:#fff;
-  background: #6E9DAF ;
-  border: 1px solid #6E9DAF ;
+  background: #FFFFFF ;
+  border: 1px solid #FFFFFF ;
   box-shadow: none;
   -webkit-box-shadow: none;
 }
@@ -657,17 +657,17 @@ a.accordion-toggle  i{
   margin-top: -10px;
   text-align: center;
   margin-right: -15px;
-  background: #6E9DAF;
+  background: #FFFFFF;
   color:#fff;
 }
 
 .panel-heading.active a.accordion-toggle i{
-  background: #6E9DAF;
+  background: #FFFFFF;
   color: #fff;
 }
 
 .panel-heading.active a.accordion-toggle.collapsed i{
-  background: #6E9DAF;
+  background: #FFFFFF;
   color: #fff;
 }
 
@@ -713,7 +713,7 @@ a.accordion-toggle  i{
 
 .contact-page{
   padding-top: 80px;
-  background:#6E9DAF;
+  background:#FFFFFF;
   margin-top:-10px;
 }
 
@@ -745,7 +745,7 @@ textarea#message{
   padding-top: 30px;
   padding-bottom: 30px;
   color: #fff;
-  background: #6E9DAF;
+  background: #FFFFFF;
 }
 
 #footer a {
@@ -783,18 +783,16 @@ textarea#message{
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
+<!--  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="row">
 	<div class="col-md-2">
 	  <div class="site-logo">
-	    <a href="http://entityobjects.com" class="brand">
-          <img src="http://entityobjects.com/images/metaq_logo.jpg" width="220" height="76" border="0">
-        </a>
+	    <a href="http://getsome.thatdixie.com" class="brand">:-)</a>
 	  </div>
 	</div>
   </nav>
-    
+-->    
 
 EOF;
 

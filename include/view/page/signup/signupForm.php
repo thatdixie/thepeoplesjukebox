@@ -21,8 +21,12 @@ function signup()
             <div class="wow fadeInDown">
               <div class="col-sm-5 col-sm-offset-3">
                 <div class="form-group">
-                  <label>Name *</label>
-                  <input type="text" name="name" class="form-control" required="required">
+                  <label>First Name *</label>
+                  <input type="text" name="first" class="form-control" required="required">
+                </div>
+                <div class="form-group">
+                  <label>Last Name *</label>
+                  <input type="text" name="last" class="form-control" required="required">
                 </div>
                 <div class="form-group">
                   <label>Email *</label>

@@ -23,7 +23,7 @@ function login()
               <div class="wow fadeInDown">
                 <div class="col-sm-5 col-sm-offset-3">
                   <div class="form-group">
-                    <label>Username</label>
+                    <label>Email</label>
                     <input type="text" name="username" class="form-control" required="required">
                   </div>
                   <div class="form-group">
@@ -33,7 +33,8 @@ function login()
                   <div class="form-group">
                     <input type="hidden" name="login" value="yes">
                     <button type="submit" name="submit" class="btn btn-primary btn-lg" required="required">Login</button>
-                   </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/signup/" style="color: black">sign up here</a> 
+                  </div>
                 </div>
               </div>
              </div>
@@ -53,7 +54,7 @@ function userResetForm($username, $resetCode)
 {
 ?>
   <section id="contact">
-    <div class="contact-page">
+    <div class="contact-page" style="background-color: grey">
       <div class="container">
         <div class="center">
           <br><br><br>

@@ -1,5 +1,12 @@
 <?php
-require_once "../include/view/page/index/indexIncludeFiles.php";
+require_once "../include/view/page/user/indexIncludeFiles.php";
+require_once "../include/etc/session.php";
+siteSession();
+
+if(!isAdminLoginOK())
+{
+    redirect("/login/");
+}
 
 head();
 nav();
