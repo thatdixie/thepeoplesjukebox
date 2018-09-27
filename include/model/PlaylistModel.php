@@ -7,7 +7,7 @@ require      "Playlist.php";
  * map Playlist class to jukeboxDB.
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  *********************************************************************
  */
 class PlaylistModel extends JukeboxDB

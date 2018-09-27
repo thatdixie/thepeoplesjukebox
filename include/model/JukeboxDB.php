@@ -6,7 +6,7 @@ require_once "DBConstants.php";
  * JukeboxDB is the base class for jukeboxDB access.
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  ********************************************************************
  */
 class JukeboxDB implements DBConstants

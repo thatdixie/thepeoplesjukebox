@@ -7,7 +7,7 @@ require      "Faq.php";
  * map Faq class to jukeboxDB.
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  *********************************************************************
  */
 class FaqModel extends JukeboxDB

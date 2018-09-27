@@ -7,7 +7,7 @@ require      "Media.php";
  * map Media class to jukeboxDB.
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  *********************************************************************
  */
 class MediaModel extends JukeboxDB

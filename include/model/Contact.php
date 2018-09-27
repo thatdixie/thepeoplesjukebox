@@ -5,7 +5,7 @@ require_once "DBObject.php";
  * Contact represents a table in jukeboxDB 
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  ********************************************
  */
 class Contact extends DBObject

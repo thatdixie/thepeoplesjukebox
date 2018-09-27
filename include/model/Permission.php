@@ -5,7 +5,7 @@ require_once "DBObject.php";
  * Permission represents a table in jukeboxDB 
  *
  * @author  megan
- * @version 180924
+ * @version 180927
  ********************************************
  */
 class Permission extends DBObject
