@@ -26,6 +26,16 @@ if(isCaptchaOK())
     $db        = new UserLoginModel();
     $user      = new User();
 
+    if($db->findByUserName(getUserSession("contactEmail")))
+    {
+        //------------------------------
+        // User email already used...
+        //------------------------------
+        setCaptchaNOTOK();
+        kissyface("Sorry! That email is already being used!", "/signup/");
+        return;
+    }
+    
     //-------------------------------------------------
     // Insert "info-stubs" ( i just made that up lol)
     // that may fill in with actual user data later
@@ -81,6 +91,7 @@ if(isCaptchaOK())
     // send Thank you message and
     // redirect to user home page
     //---------------------------------
+    setCaptchaNOTOK();
     kissyface("Thank You! Check Your Email!", "/");
 }
 else

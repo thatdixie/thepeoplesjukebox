@@ -85,6 +85,18 @@ function setCaptchaOK()
     $_SESSION['CAPTCHA_OK'] = "YES";
 }
 
+/*
+ * set CAPTCHA NOT OK
+ *
+ * @param  null
+ * @return null
+ * 
+*/			
+function setCaptchaNOTOK()
+{
+    unset ($_SESSION['CAPTCHA_OK']);
+}
+
 
 /*
  * Is ADMIN_LOGIN_OK set

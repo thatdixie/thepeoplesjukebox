@@ -52,7 +52,46 @@ EOF;
         return($this->selectDB($query, "User"));
     }
 
+    /*********************************************************
+     * Return User by userName
+     *
+     * @return array  $user
+     *********************************************************
+     */
+    public function findByUserName($userName)
+    {
+        $query= <<<EOF
 
+        SELECT        
+            userId,
+            accountId,
+            userName,
+            userPassword,
+            userPasscode,
+            userFirstName,
+            userLastName,
+            userIsJukebox,
+            userNickName,
+            userLikes,
+            userWorkplace,
+            userWorkHours,
+            userPhoto,
+            userLongitude,
+            userLatitude,
+            userLastLogin,
+            userCreated,
+            userModified,
+            userStatus                      		               
+	    FROM 
+            user 
+	    WHERE 
+	        userName='{$userName}' 
+EOF;
+        return($this->selectDB($query, "User"));
+    }
+
+
+    
     /*********************************************************
      * Returns a User for $username and $password
      *
