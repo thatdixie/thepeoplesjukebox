@@ -91,6 +91,45 @@ EOF;
     }
 
 
+    /*********************************************************
+     * Return User by userName and userPasscode
+     *
+     * @return array  $user
+     *********************************************************
+     */
+    public function findByUserPasscode($userName, $passCode)
+    {
+        $query= <<<EOF
+
+        SELECT        
+            userId,
+            accountId,
+            userName,
+            userPassword,
+            userPasscode,
+            userFirstName,
+            userLastName,
+            userIsJukebox,
+            userNickName,
+            userLikes,
+            userWorkplace,
+            userWorkHours,
+            userPhoto,
+            userLongitude,
+            userLatitude,
+            userLastLogin,
+            userCreated,
+            userModified,
+            userStatus                      		               
+	    FROM 
+            user 
+	    WHERE 
+	        userName='{$userName}' AND userPasscode='{$passCode}'
+EOF;
+        return($this->selectDB($query, "User"));
+    }
+
+
     
     /*********************************************************
      * Returns a User for $username and $password
