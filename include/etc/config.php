@@ -1,7 +1,7 @@
 <?php
 /***********************************
  * config.php
- * @author  mgill
+ * @author  megan
  ***********************************
 */			
 
@@ -22,4 +22,8 @@ function smtpConfig()
     return("/opt/install/PHPMailer/PHPMailer.json");
 }
 
+function mp3Data()
+{
+    return("/opt/data/jukebox/");
+}
 ?>

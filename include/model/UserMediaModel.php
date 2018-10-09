@@ -1,6 +1,7 @@
 <?php
 require_once "JukeboxDB.php";
-require      "Media.php";
+require      "MediaModel.php";
+
 
 /********************************************************************
  * UserMediaModel inherits MediaModel and provides functions to

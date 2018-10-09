@@ -5,6 +5,7 @@ require_once $root."/include/etc/random.php";
 require_once $root."/include/etc/json.php";
 require_once $root."/include/model/UserLoginModel.php";
 require_once $root."/include/model/UserPermissionsModel.php";
+require_once $root."/include/model/UserMediaModel.php";
 
 /********************************************************************
  * UserSession is a class for TPJ API and provides functions to
@@ -65,7 +66,7 @@ class UserSession
             $user   = null;
             $db     = new UserLoginModel();
     
-            if(($user = $db->findUserByPasscode($username, $passcode)))
+            if(($user = $db->findByUserPasscode($username, $passcode)))
             {
                 return($user);
             }
