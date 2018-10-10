@@ -1,5 +1,5 @@
 <?php
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require_once "PermissionModel.php";
 require_once "Permission.php";
 require_once "User.php";

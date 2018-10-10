@@ -1,7 +1,7 @@
 <?php
 $root = realpath($_SERVER['DOCUMENT_ROOT']);
 require_once $root."/include/etc/sql.php";
-require_once "EntityObjectsDB.php";
+require_once "JukeboxDB.php";
 require_once "UserModel.php";
 require_once "User.php";
 require_once "Ugroup.php";

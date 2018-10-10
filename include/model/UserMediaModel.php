@@ -14,7 +14,7 @@ require      "MediaModel.php";
 class UserMediaModel extends MediaModel
 {
     /*********************************************************
-     * Returns a Media by userId
+     * Returns a Media by userId (it's the jukebox catalog)
      *
      * @return media
      *********************************************************
@@ -36,6 +36,66 @@ class UserMediaModel extends MediaModel
 
         return($this->selectDB($query, "Media"));
     }
+
+
+    /*********************************************************
+     * Returns a Media by userId (jukebox) 
+     * that's currently playing -- joins playlist
+     *
+     * @return media
+     *********************************************************
+     */
+    public function findCurrentlyPlaying($id)
+    {
+        $query="SELECT media.mediaId,".
+                      "media.userId,".
+                      "media.mediaFile,".
+                      "media.mediaArtist,".
+                      "media.mediaTitle,".
+                      "media.mediaYear,".
+                      "media.mediaDuration,".
+                      "media.mediaCreated,".
+                      "media.mediaModified,".
+                      "media.mediaStatus ".                      		               
+	       "FROM media, playlist ".
+	       "WHERE playlist.playlistStatus='PLAYING' ".
+           "AND media.mediaId=playlist.mediaId ".
+           "AND media.userId=playlist.userId ".
+           "AND playlist.userId=".$id;
+
+        return($this->selectDB($query, "Media"));
+    }
+
+
+    /*********************************************************
+     * Returns a Media by userId (jukebox) 
+     * that's currently in QUEUE (including currently playing) 
+     * -- joins playlist
+     *
+     * @return media
+     *********************************************************
+     */
+    public function findPlayQueue($id)
+    {
+        $query="SELECT media.mediaId,".
+                      "media.userId,".
+                      "media.mediaFile,".
+                      "media.mediaArtist,".
+                      "media.mediaTitle,".
+                      "media.mediaYear,".
+                      "media.mediaDuration,".
+                      "media.mediaCreated,".
+                      "media.mediaModified,".
+                      "media.mediaStatus ".
+	       "FROM media, playlist ".
+	       "WHERE (playlist.playlistStatus='PLAYING' OR playlist.playlistStatus='QUEUE') ".
+           "AND media.mediaId=playlist.mediaId ".
+           "AND media.userId=playlist.userId ".
+           "AND playlist.userId=".$id;
+
+        return($this->selectDB($query, "Media"));
+    }
+
 }
 
 ?>
