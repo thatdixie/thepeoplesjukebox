@@ -91,7 +91,7 @@ class UserMediaModel extends MediaModel
 	       "WHERE (playlist.playlistStatus='PLAYING' OR playlist.playlistStatus='QUEUE') ".
            "AND media.mediaId=playlist.mediaId ".
            "AND media.userId=playlist.userId ".
-           "AND playlist.userId=".$id;
+           "AND playlist.userId=".$id." ORDER BY playlist.playlistOrder";
 
         return($this->selectDB($query, "Media"));
     }

@@ -25,9 +25,9 @@ function stub()
         <div class="col-md-10 col-md-offset-1">
           <h2>Dixie's Jukebox</h2>
           <p class="lead" style="cursor: pointer;">
-          <a href="javascript:onclick=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234');">
+          <a href="javascript:onclick=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukeboxId=3&select=yes');">
           <img style="cursor: pointer;" src="/images/jukebox.jpeg" border="0" id="jukebox"/></a><br>
-          <a href="javascript:ontouchstart=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukebox=1234');">
+          <a href="javascript:ontouchstart=playSound(this, 'http://thepeoplesjukebox.com/mp3player/mp3player.php?jukeboxId=3&select=yes');">
           <button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" >Play Me!</button>
           </a>
           </p>

@@ -12,7 +12,7 @@ function playSound(el,soundfile)
 	}
         else if (el.mp3.ended)
 	{
-	    el.mp3.currentTime =0;
+	    //el.mp3.currentTime =0;
             el.mp3.load();
             el.mp3.play();
 	}

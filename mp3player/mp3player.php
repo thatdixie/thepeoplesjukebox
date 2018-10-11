@@ -1,40 +1,34 @@
 <?php
-
+/**
+ * Get/Play next song on a jukbox queue
+ *
+ * @author  dixie
+ **
+*/
 require_once "../include/etc/random.php";
 require_once "../include/etc/session.php";
+require_once "../include/etc/config.php";
+require_once "../include/model/UserMediaModel.php";
+require_once "../include/model/UserPlaylistModel.php";
 siteSession();
 
-//-------------------------------------------
-// a very silly implementation of
-// circular queue becasue I'm tired LOL
-//-------------------------------------------
-if(isset($_SESSION['mysong']))
-    $mysong = $_SESSION['mysong'];
+$db = new UserPlaylistModel();
+$id = getRequest("jukeboxId");
+if(getRequest("select") == "yes")
+    $media = $db->findNextInQueue($id);
 else
-    $mysong = 0;
+    $media = $db->getCurrentlyPlaying($id);
 
-$foo    = $mysong.".mp3";
-
-if($mysong==0)
-    $mysong=1;
-elseif($mysong==1)
-    $mysong=2;
-elseif($mysong==2)
-    $mysong=3;
-else
-    $mysong=0;
-
-$_SESSION['mysong'] = $mysong;
-
-$size = filesize($foo);
+$mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+$size    = filesize($mp3file);
 
 header("Accept-Ranges: bytes");
 header("Content-Range: 0-".$size."/*");
 header("Content-Type: audio/mpeg");
 header("Content-Length: ".$size);
-header("Content-Disposition: attachment; filename=".$foo);
+header("Content-Disposition: attachment; filename=".$mp3file);
 header("Cache-Control: no-cache");
-echo file_get_contents($foo, TRUE);
+echo file_get_contents($mp3file, TRUE);
 
 ?>
 
