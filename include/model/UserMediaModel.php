@@ -39,6 +39,43 @@ class UserMediaModel extends MediaModel
 
 
     /*********************************************************
+     * find media by search 
+     *
+     * @param  int    -- $id
+     * @param  string -- $key
+     * @return media
+     *********************************************************
+     */
+    public function findBySearchKey($id, $key)
+    {
+        if(blacklistSafe($key) != "")
+        {
+            $search = " AND (mediaArtist COLLATE UTF8_GENERAL_CI LIKE '%".$key."%' ".
+                        "OR  mediaTitle  COLLATE UTF8_GENERAL_CI LIKE '%".$key."%' )";
+        }
+        else
+        {
+            $search = " ";
+        }
+
+        $query="SELECT mediaId,".
+                      "userId,".
+                      "mediaFile,".
+                      "mediaArtist,".
+                      "mediaTitle,".
+                      "mediaYear,".
+                      "mediaDuration,".
+                      "mediaCreated,".
+                      "mediaModified,".
+                      "mediaStatus ".                      		               
+	       "FROM media ".
+            "WHERE mediaStatus='ACTIVE' AND userId=".$id." ".$search;
+
+        return($this->selectDB($query, "Media"));
+    }
+
+    
+    /*********************************************************
      * Returns a Media by userId (jukebox) 
      * that's currently playing -- joins playlist
      *

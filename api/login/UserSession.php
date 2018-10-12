@@ -8,6 +8,7 @@ require_once $root."/include/model/UserLoginModel.php";
 require_once $root."/include/model/UserPermissionsModel.php";
 require_once $root."/include/model/UserMediaModel.php";
 require_once $root."/include/model/UserPlaylistModel.php";
+require_once $root."/include/model/UserProfileModel.php";
 
 /********************************************************************
  * UserSession is a class for TPJ API and provides functions to
