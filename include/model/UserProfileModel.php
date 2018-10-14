@@ -2,7 +2,8 @@
 $root = realpath($_SERVER['DOCUMENT_ROOT']);
 require_once $root."/include/etc/sql.php";
 require_once "JukeboxDB.php";
-//require_once "UserModel.php";
+require_once "UserModel.php";
+require_once "UserMediaModel.php";
 
 /********************************************************************
  * UserProfileModel inherits UserModel and provides functions to
@@ -61,6 +62,48 @@ class UserProfileModel extends UserModel
         return($this->selectDB($query, "User"));
     }
 
+    /*********************************************************
+     * Find Jukeboxs near me
+     *
+     * @param  $long float 
+     * @param  $lat  float
+     * @return JukeBoxProfile
+     *********************************************************
+     */
+    public function findJukeboxNearMe($long=0, $lat=0)
+    {
+        $query="SELECT userId,".
+                      "accountId,".
+                      "userName,".
+                      "userPassword,".
+                      "userPasscode,".
+                      "userFirstName,".
+                      "userLastName,".
+                      "userIsJukebox,".
+                      "userNickName,".
+                      "userLikes,".
+                      "userWorkplace,".
+                      "userWorkHours,".
+                      "userPhoto,".
+                      "userLongitude,".
+                      "userLatitude,".
+                      "userLastLogin,".
+                      "userCreated,".
+                      "userModified,".
+                      "userStatus ".                      		               
+	       "FROM user ".
+	       "WHERE userIsJukebox='YES' AND userStatus='ACTIVE' AND userPhoto!='NO' LIMIT 5";
+        
+        $users = $this->selectDB($query, "User");
+        $db    = new UserMediaModel();
+    
+        for($i=0; $i<count($users); $i++)
+        {
+            $media = $db->findCurrentlyPlaying($users[$i]->userId);
+            $users[$i]->userStatus = $media[0]->mediaTitle." -- ".$media[0]->mediaArtist;
+        }
+        return($users);
+    }
 }
 
 ?>
