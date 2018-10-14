@@ -26,4 +26,9 @@ function mp3Data()
 {
     return("/opt/data/jukebox/");
 }
+
+function photoData()
+{
+    return("/opt/data/jukebox/");
+}
 ?>
