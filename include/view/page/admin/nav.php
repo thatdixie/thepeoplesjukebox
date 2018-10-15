@@ -30,7 +30,7 @@ function nav()
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black" style="color: white">
                 <?php if(isAdminLoginOK()) { echo "\n"; ?>
-                <li><a href="/user/">Jukebox</a></li>
+                <li><a href="/user/index.php?jukeboxId=<?php echo getUserSession("userId"); ?> ">Jukebox</a></li>
                 <li><a href="/admin/">Inbox</a></li>
                 <li><a href="/admin/faq.php">FAQ-CMS</a></li>
                 <?php if(hasPermission('canUserEdit')) { echo "\n"; ?>

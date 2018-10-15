@@ -86,7 +86,7 @@ function adminPage()
         // You're not a site admin go to regular
         // user page.
         //-----------------------------------------
-        redirect("/user/");
+        redirect("/user/index.php?jukeboxId=".getUserSession("userId"));
     }
 
     require_once "../include/model/AdminContactModel.php";

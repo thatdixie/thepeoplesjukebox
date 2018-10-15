@@ -22,7 +22,7 @@ function siteSession()
 {
     if(!isset($_SESSION['SITESESSION']))
     {
-        session_start();
+        session_start(['cookie_lifetime' => 86400*365*10,]);
 	    $_SESSION['SITESESSION'] ="OK";
     }
 }

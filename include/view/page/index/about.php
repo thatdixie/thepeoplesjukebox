@@ -46,12 +46,14 @@ function about($profiles)
               <td>&nbsp;</td><td>&nbsp;</td>
             </tr>
             <tr>
-              <td>&nbsp;</td><td><a href="#"><button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a></td>
+              <td><a href="/user/index.php?jukeboxId=<?php echo $profile->userId ?>" ><button type="submit" name="submit" class="btn btn-primary btn-lg" >Play Jukebox</button></a></td>
+              <td><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button></a></td>
             </tr>
           </table>
           </h3>
         </div>
       </div>
+      <br>
 <?php
     }
 ?>
