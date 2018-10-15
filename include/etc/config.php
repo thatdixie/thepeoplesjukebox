@@ -11,18 +11,18 @@ function systemEmail()
                     'cyrusface@gmail.com');
     return($admins);
 }
-/*
+
 function pubServerAddress()
 {
     return("http://jukebox");
 }
-*/
 
+/*
 function pubServerAddress()
 {
     return("http://thepeoplesjukebox.com");
 }
-
+*/
 function smtpConfig()
 {
     return("/opt/install/PHPMailer/PHPMailer.json");
