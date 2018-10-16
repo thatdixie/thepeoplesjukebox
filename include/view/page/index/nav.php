@@ -11,13 +11,21 @@ function nav()
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: black; color: white">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <?php if(isAdminLoginOK()) { echo "\n"; ?>
+          <div class="col-md-3">
+            <div class="site-logo">
+              <a href="/" class="brand" style="color: white">TPJ</a>
+            </div>
+          </div>				  
+          <div class="col-md-9">	 
+          <?php } else { echo "\n"; ?>
+         <div class="col-md-4">
             <div class="site-logo">
               <a href="/" class="brand" style="color: white">The Peoples Jukebox</a>
             </div>
-          </div>					  
-
+          </div>		  
           <div class="col-md-8">	 
+          <?php }  echo "\n"; ?>
             <div class="navbar-header" style="background-color: black; color: white">
               <button type="button" class="navbar-toggle"  data-toggle="collapse" data-target="#menu">
                 <i class="fa fa-bars"></i>
@@ -28,7 +36,7 @@ function nav()
                <?php if(isAdminLoginOK()) { echo "\n"; ?>
                 <li><a href="#why">What Why How?</a></li>
                 <?php if(hasPermission('canJukeboxAdmin')) { echo "\n"; ?>
-                <li><a href="#">Edit-My-Catalog</a></li>
+                <li><a href="/user/index.php?func=edit_catalog">My-Catalog</a></li>
                 <?php } echo "\n"; ?>
                 <li><a href="/user/index.php?func=find_jukebox">Find-a-Jukebox</a></li>
                 <li><a href="/user/index.php?func=edit_profile">My-Profile</a></li>

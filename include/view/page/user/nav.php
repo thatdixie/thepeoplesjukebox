@@ -11,9 +11,9 @@ function nav()
     <nav class="navbar navbar-default navbar-fixed-top" style="background-color: black" style="color: white">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="site-logo">
-              <a href="/" class="brand" style="color: white">The Peoples Jukebox</a>
+              <a href="/" class="brand" style="color: white">TPJ</a>
             </div>
           </div>					  
 
