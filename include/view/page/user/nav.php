@@ -29,13 +29,13 @@ function nav()
                 <li><a href="/admin/">Home</a></li>
                 <?php } echo "\n"; ?>
                 <?php if(!hasPermission('canContentEdit')) { echo "\n"; ?>
-                <li><a href="/user/">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <?php } echo "\n"; ?>
                 <?php if(hasPermission('canJukeboxAdmin')) { echo "\n"; ?>
                 <li><a href="#">Edit-My-Catalog</a></li>
                 <?php } echo "\n"; ?>
                 <li><a href="/user/index.php?func=find_jukebox">Find a Jukebox</a></li>
-                <li><a href="/user/index.php?func=edit_profile">Profile</a></li>
+                <li><a href="/user/index.php?func=edit_profile">My-Profile</a></li>
                 <li><a href="/login/index.php?func=logout">Logout</a></li>
               </ul>
             </div>

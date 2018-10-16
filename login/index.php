@@ -84,9 +84,12 @@ function adminPage()
     {
         //-----------------------------------------
         // You're not a site admin go to regular
-        // user page.
+        // jukebox page or home page.
         //-----------------------------------------
-        redirect("/user/index.php?jukeboxId=".getUserSession("userId"));
+        if(hasPermission("canJukeboxAdmin"))
+            redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=jukebox");
+        else
+            redirect("/");
     }
 
     require_once "../include/model/AdminContactModel.php";
