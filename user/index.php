@@ -18,7 +18,10 @@ foot();
 function stub()
 {
     $func     = getRequest("func");
-    if($func=="find_jukebox" || $func=="edit_profile" || $func=="")
+    if($func=="find_jukebox"
+    || $func=="edit_profile"
+    || $func == "edit_catalog"
+    || $func=="")
         redirect("/"); // stub these for now...
     
     $jukeboxId= getRequest("jukeboxId");
