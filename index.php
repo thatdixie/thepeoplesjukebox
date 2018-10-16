@@ -1,7 +1,9 @@
 <?php
+require_once "include/etc/session.php";
 require_once "include/view/page/index/indexIncludeFiles.php";
 require_once "include/model/AdminFaqModel.php";
 require_once "include/model/UserProfileModel.php";
+siteSession();
 //-----------------------------------
 // partials for head and navigation
 // and page content and footer...

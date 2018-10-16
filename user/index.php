@@ -17,6 +17,10 @@ foot();
 
 function stub()
 {
+    $func     = getRequest("func");
+    if($func=="find_jukebox" || $func=="edit_profile" || $func=="")
+        redirect("/"); // stub these for now...
+    
     $jukeboxId= getRequest("jukeboxId");
     $userId   = getUserSession("userId");
     $db       = new UserProfileModel();
