@@ -20,7 +20,6 @@ function head()
     <meta name="description" content="A Free Jukebox for Everyone"/>
     <title>ThePeoplesJukebox.com</title>
     <link rel="apple-touch-icon" href="touch-icon-iphone.png">
-    <link rel="apple-touch-startup-image" sizes="320x320" href="/launch.png">
     <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
