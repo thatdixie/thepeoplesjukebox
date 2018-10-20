@@ -49,7 +49,7 @@ function viewtest2()
       <div class="center">
         <h2><?php echo $profile[0]->userNickName."'s Jukebox";?> </h2>
         <p class="lead" style="cursor: pointer;">
-        <?php echo "<a href=\"javascript:onclick=platNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
+        <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
         <img style="cursor: pointer;" src="/user/photoviewer.php?userId=<?php echo $jukeboxId ?>" border="0" id="jukebox"/></a><br>
         <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
         <button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" ><?php if($select=="yes") echo  "Stop/Play Next"; else echo  "Stop/Play"; ?> </button>

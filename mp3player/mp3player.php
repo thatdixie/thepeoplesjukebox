@@ -29,13 +29,6 @@ header("Content-Length: ".$size);
 header("Content-Disposition: attachment; filename=".$mp3file);
 header("Cache-Control: no-cache");
 echo file_get_contents($mp3file, TRUE);
-
-/*
-$getInfo = getimagesize($mp3file);
-header('Content-type: '. $getInfo['mime']);
-ob_clean();
-flush();
-readfile($mp3file)*/
 ?>
 
 
