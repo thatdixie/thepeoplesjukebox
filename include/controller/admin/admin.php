@@ -34,6 +34,7 @@ function adminLogin($u, $p)
 	    setUserSession('userStatus'   , $user->userStatus);
 	    setUserSession('userLastLogin', toHumanDate($user->userLastLogin));
         setUserSession('userId'       , $user->userId);
+        setUserSession('userPasscode' , $user->userPasscode);
         setUserSession('nextLastLogin', sqlNow());
 	    getUserPermissions($user->userId);
 

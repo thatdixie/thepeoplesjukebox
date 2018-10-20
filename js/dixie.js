@@ -23,32 +23,64 @@
     }
 })(document,window.navigator,'standalone');
 
+//------------------------------------
+// global page scope vars for jukebox
+//------------------------------------
+page = null;
+username ='';
+passcode ='';
+jukeboxId=0;
+URL ='';
 
 //-------------------------------------------
-// This function plays the jukebox -- it's
-// a work in progres lol 
+// This function plays the next song on
+// a jukebox -- uses API request play_next 
 //-------------------------------------------
-function playSound(el,soundfile) {
-    if (el.mp3) {
-        if (el.mp3.paused) {
-           //el.mp3 = new Audio(soundfile);
-            el.mp3.load();
-            el.mp3.play();
-	}
-        else if (el.mp3.ended) {
-            //el.mp3.load();
-            el.mp3.play();
-	}
-        else {
-            el.mp3.pause();
-	}
+function playNextSong(p, u, pc, jb) {
+
+    page=p;
+    username=u;
+    passcode=pc;
+    jukeboxId=jb;
+    URL='/api/play_next?username='+username+'&passcode='+passcode+'&jukeboxId='+jukeboxId;
+    
+    if (page.mp3) {
+        page.mp3.pause();
+	page.mp3 = null;
+        $.getJSON(URL, function(media) {
+        file = media.mediaFile+'&bust='+new Date().getTime();
+        page.mp3 = new Audio(file);
+        page.mp3.loop = false;
+        page.mp3.addEventListener("ended", function(e) {
+	    songEnded();	
+	});
+	page.mp3.play();
+        document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
+        });
     }
     else {   
-    soundfile = soundfile+'&bust='+new Date().getTime();
-        el.mp3 = new Audio(soundfile);        
-        //el.mp3.loop = false;
-        //el.mp3.load();
-        el.mp3.play();
+        $.getJSON(URL, function(media) {
+        file = media.mediaFile+'&bust='+new Date().getTime();
+	page.mp3 = new Audio(file);
+        page.mp3.loop = false;
+        page.mp3.addEventListener("ended", function(e) {
+	    songEnded();	
+	});
+	page.mp3.play();
+        document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
+        });
     }
+}
+
+
+//-----------------------------------------------
+// This function is the callback that's called
+// when a song ends -- it calls playNextSong() 
+// again creating an endless play loop
+//-----------------------------------------------
+function songEnded() {
+
+    playNextSong(page, username, passcode, jukeboxId);
+
 }
 
