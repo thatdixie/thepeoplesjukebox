@@ -31,7 +31,8 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         
     if($medias)
     {
-        $medias[0]->mediaFile = pubServerAddress()."/mp3player/mp3player.php?jukeboxId=".$jukeboxId;
+        if($medias[0]->mediaSource == "UPLOAD")
+            $medias[0]->mediaFile = pubServerAddress()."/mp3player/mp3player.php?jukeboxId=".$jukeboxId;
         jsonResponse(json_encode($medias[0]));
     }
     else
