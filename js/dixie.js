@@ -31,6 +31,8 @@ username ='';
 passcode ='';
 jukeboxId=0;
 URL ='';
+file='';
+semaphore =0;
 
 //-------------------------------------------
 // This function plays the next song on
@@ -48,26 +50,26 @@ function playNextSong(p, u, pc, jb) {
         page.mp3.pause();
 	page.mp3 = null;
         $.getJSON(URL, function(media) {
-        file = media.mediaFile+'&bust='+new Date().getTime();
-        page.mp3 = new Audio(file);
-        page.mp3.loop = false;
-        page.mp3.addEventListener("ended", function(e) {
-	    songEnded();	
-	});
-	page.mp3.play();
-        document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
+            file = media.mediaFile+'&bust='+new Date().getTime();
+            page.mp3 = new Audio(file);
+            page.mp3.loop = false;
+            page.mp3.addEventListener("ended", function(e) {
+	        songEnded();
+	    });
+ 	    page.mp3.play();
+            document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
         });
     }
     else {   
         $.getJSON(URL, function(media) {
-        file = media.mediaFile+'&bust='+new Date().getTime();
-	page.mp3 = new Audio(file);
-        page.mp3.loop = false;
-        page.mp3.addEventListener("ended", function(e) {
-	    songEnded();	
-	});
-	page.mp3.play();
-        document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
+            file = media.mediaFile+'&bust='+new Date().getTime();
+	    page.mp3 = new Audio(file);
+            page.mp3.loop = false;
+            page.mp3.addEventListener("ended", function(e) {
+	        songEnded();	
+	    });
+ 	    page.mp3.play();
+            document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
         });
     }
 }
@@ -81,6 +83,31 @@ function playNextSong(p, u, pc, jb) {
 function songEnded() {
 
     playNextSong(page, username, passcode, jukeboxId);
-
 }
 
+
+//-------------------------------------
+// Waits on getJSON callback completion
+//-------------------------------------
+async function getJSONWait() {
+
+    semaphore =1;
+    
+    while(semaphore)	
+        await sleep(1000);
+}
+
+//----------------------------
+// signals waiting thread...
+//----------------------------
+function getJSONSignal() {
+
+    semaphore =0;
+}
+
+//-----------------------------------------
+// sleep function uses brand new promises
+// ----------------------------------------
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
