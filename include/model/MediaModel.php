@@ -23,6 +23,7 @@ class MediaModel extends JukeboxDB
         $query="SELECT mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -49,6 +50,7 @@ class MediaModel extends JukeboxDB
 	              "mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -61,6 +63,7 @@ class MediaModel extends JukeboxDB
                       "null,".
                       " ".$media->userId." ,".
                       "'".$this->sqlSafe($media->mediaFile)."',".
+                      "'".$this->sqlSafe($media->mediaSource)."',".
                       "'".$this->sqlSafe($media->mediaArtist)."',".
                       "'".$this->sqlSafe($media->mediaTitle)."',".
                       "'".$this->sqlSafe($media->mediaYear)."',".
@@ -89,6 +92,7 @@ class MediaModel extends JukeboxDB
 	              "mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -101,6 +105,7 @@ class MediaModel extends JukeboxDB
                       "null,".
                       " ".$media->userId." ,".
                       "'".$this->sqlSafe($media->mediaFile)."',".
+                      "'".$this->sqlSafe($media->mediaSource)."',".
                       "'".$this->sqlSafe($media->mediaArtist)."',".
                       "'".$this->sqlSafe($media->mediaTitle)."',".
                       "'".$this->sqlSafe($media->mediaYear)."',".
@@ -130,6 +135,7 @@ class MediaModel extends JukeboxDB
                       "mediaId= ".$media->mediaId." ,".
                       "userId= ".$media->userId." ,".
                       "mediaFile='".$this->sqlSafe($media->mediaFile)."',".
+                      "mediaSource='".$this->sqlSafe($media->mediaSource)."',".
                       "mediaArtist='".$this->sqlSafe($media->mediaArtist)."',".
                       "mediaTitle='".$this->sqlSafe($media->mediaTitle)."',".
                       "mediaYear='".$this->sqlSafe($media->mediaYear)."',".

@@ -164,6 +164,7 @@ class UserPlaylistModel extends PlaylistModel
         $query="SELECT mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -190,6 +191,7 @@ class UserPlaylistModel extends PlaylistModel
         $query="SELECT media.mediaId,".
                       "media.userId,".
                       "media.mediaFile,".
+                      "media.mediaSource,".
                       "media.mediaArtist,".
                       "media.mediaTitle,".
                       "media.mediaYear,".

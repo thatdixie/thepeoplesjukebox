@@ -13,6 +13,7 @@ class Media extends DBObject
     public $mediaId=0;
     public $userId=0;
     public $mediaFile="";
+    public $mediaSource="";
     public $mediaArtist="";
     public $mediaTitle="";
     public $mediaYear="";
@@ -35,6 +36,7 @@ class Media extends DBObject
         $b.="mediaId=".$this->mediaId."&";
         $b.="userId=".$this->userId."&";
         $b.="mediaFile=".$this->mediaFile."&";
+        $b.="mediaSource=".$this->mediaSource."&";
         $b.="mediaArtist=".$this->mediaArtist."&";
         $b.="mediaTitle=".$this->mediaTitle."&";
         $b.="mediaYear=".$this->mediaYear."&";
@@ -78,6 +80,7 @@ class Media extends DBObject
         $this->mediaId= $json['mediaId'];
         $this->userId= $json['userId'];
         $this->mediaFile= $json['mediaFile'];
+        $this->mediaSource= $json['mediaSource'];
         $this->mediaArtist= $json['mediaArtist'];
         $this->mediaTitle= $json['mediaTitle'];
         $this->mediaYear= $json['mediaYear'];

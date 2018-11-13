@@ -24,6 +24,7 @@ class UserMediaModel extends MediaModel
         $query="SELECT mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -61,6 +62,7 @@ class UserMediaModel extends MediaModel
         $query="SELECT mediaId,".
                       "userId,".
                       "mediaFile,".
+                      "mediaSource,".
                       "mediaArtist,".
                       "mediaTitle,".
                       "mediaYear,".
@@ -87,6 +89,7 @@ class UserMediaModel extends MediaModel
         $query="SELECT media.mediaId,".
                       "media.userId,".
                       "media.mediaFile,".
+                      "media.mediaSource,".
                       "media.mediaArtist,".
                       "media.mediaTitle,".
                       "media.mediaYear,".
@@ -117,6 +120,7 @@ class UserMediaModel extends MediaModel
         $query="SELECT media.mediaId,".
                       "media.userId,".
                       "media.mediaFile,".
+                      "media.mediaSource,".
                       "media.mediaArtist,".
                       "media.mediaTitle,".
                       "media.mediaYear,".
