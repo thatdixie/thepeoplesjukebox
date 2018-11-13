@@ -52,7 +52,9 @@ function viewtest2()
         <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
         <img style="cursor: pointer;" src="/user/photoviewer.php?userId=<?php echo $jukeboxId ?>" border="0" id="jukebox"/></a><br>
         <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
-        <button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" ><?php if($select=="yes") echo  "Stop/Play Next"; else echo  "Stop/Play"; ?> </button>
+<?php if($media[0]->mediaSource=='UPLOAD'){ ?>
+<button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" ><?php if($select=="yes") echo  "Stop/Play Next"; else echo  "Stop/Play"; ?> </button>
+<?php } ?>          
         </a>
         </p>
       </div>
