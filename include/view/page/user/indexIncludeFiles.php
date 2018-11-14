@@ -1,15 +1,15 @@
 <?php
 
 /***********************************
- * views for TPJ
- * /user.php 
+ * views for /user/index.php 
  *
  * @author  dixie
  ***********************************
 */			
-require_once "head.php";
-require_once "nav.php";
-require_once "contactForm.php";
-require_once "foot.php";
+$root = realpath($_SERVER['DOCUMENT_ROOT']);
+require_once $root."/include/view/page/index/head.php";
+require_once $root."/include/view/page/index/nav.php";
+require_once "viewJukebox.php";
+require_once $root."/include/view/page/index/foot.php";
 
 ?>
