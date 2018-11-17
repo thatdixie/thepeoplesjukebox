@@ -50,7 +50,7 @@ function playJukebox($id)
     $profile  = $db->find($id);
     $media    = $db2->findCurrentlyPlaying($id);
     
-    viewJukebox($profile, $media, $id);
+    viewJukebox($profile, $media);
 }
 
 function findJukebox()

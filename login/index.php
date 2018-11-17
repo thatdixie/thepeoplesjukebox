@@ -87,7 +87,7 @@ function adminPage()
         // jukebox page or home page.
         //-----------------------------------------
         if(hasPermission("canJukeboxAdmin"))
-            redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=jukebox");
+            redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=player");
         else
             redirect("/");
     }

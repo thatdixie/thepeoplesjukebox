@@ -8,9 +8,9 @@
  ***********************************************
  */
 
-function viewJukebox($profile, $media, $id)
+function viewJukebox($profile, $media)
 {
-    $jukeboxId = $id;
+    $jukeboxId = $profile[0]->userId;
     $userId    = getUserSession("userId");
     $username  = getUserSession("userName");
     $passcode  = getUserSession("userPasscode");
@@ -24,26 +24,95 @@ function viewJukebox($profile, $media, $id)
             
 ?>
   <section id="about">
-    <div class="center">
-    <br><br>
-    <h2 id="currently_playing" style="color: red"><?php echo $media[0]->mediaTitle." -- ".$media[0]->mediaArtist; ?></h2>
-    </div>
     <div class="container">
-      <div class="center">
-        <h2><?php echo $profile[0]->userNickName."'s Jukebox";?> </h2>
-        <p class="lead" style="cursor: pointer;">
-        <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
-        <img style="cursor: pointer;" src="/user/photoviewer.php?userId=<?php echo $jukeboxId ?>" border="0" id="jukebox"/></a><br>
-        <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">" ?>
-<?php if($media[0]->mediaSource=='UPLOAD'){ ?>
-<button id="but" type="submit" class="btn btn-primary btn-lg" style="cursor:pointer" ><?php if($select=="yes") echo  "Stop/Play Next"; else echo  "Stop/Play"; ?> </button>
-<?php } ?>          
-        </a>
-        </p>
+    <br><br>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-1">
+          <?php echo "<img src=\"/user/photoviewer.php?userId=".$jukeboxId."\">"; ?>
+        </div>
+        <div class="col-md-8">
+          <h3>
+          <table>
+            <tr>
+              <td><b>Playing:</b></td><td id="currently_playing" style="color: red">
+                <?php echo $media[0]->mediaTitle." -- ".$media[0]->mediaArtist; ?>
+              </td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><b>DJ:</b></td>
+              <td>
+                <?php echo $profile[0]->userNickName." (".$profile[0]->userFirstName." ".$profile[0]->userLastName.")";  ?>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Likes:</b></td><td><?php echo $profile[0]->userLikes; ?></td>
+            </tr>
+            <tr>
+              <td><b>Where:</b></td><td><?php echo $profile[0]->userWorkplace; ?></td>
+            </tr>
+            <tr>
+              <td><b>When:</b></td><td><?php echo $profile[0]->userWorkHours; ?></td>
+            </tr>
+            <tr>
+              <td>&nbsp;</td><td>&nbsp;</td>
+            </tr>
+            <tr>
+            <?php if($media[0]->mediaSource=='UPLOAD'){ echo "\n"; ?>
+              <td>
+                <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">\n" ?>
+                <button type="submit" name="submit" class="btn btn-primary btn-lg" >Play Next Song</button>
+                </a>
+              </td>
+              <td>
+                <a href="#" onclick="window.location.reload(true);">
+                &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit" class="btn btn-primary btn-lg" >Stop</button>
+                </a>
+              </td>
+              <?php } else { echo "\n"; ?>
+              <td colspan="2">
+                <b>This song only plays on the jukebox device </b>
+              </td>
+              <?php } echo "\n"; ?>
+            </tr>
+          </table>
+          </h3>  
+        </div>
+      </div> <!-- end row -->
+      <hr>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+          <form id="searchForm" action="#">
+          <input type="hidden" id="username"  value=<?php echo "\"$username\"";  ?> >
+          <input type="hidden" id="passcode"  value=<?php echo "\"$passcode\"";  ?> >
+          <input type="hidden" id="jukeboxId" value=<?php echo "\"$jukeboxId\""; ?> >
+          <input type="text"   id="formSearchKey" >
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <input type="button"  id="searchButton" class="btn btn-primary btn-lg" name="submit" value="Find Song" onclick="searchCatalog();">
+          </form>     
+        </div> 
+      </div> <!-- end row -->
+      <div id="find_song_row" class="row" style="visibility:hidden">
+        <div class="col-md-11 col-md-offset-1">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="col-md-5">Song Title</th>
+                <th scope="col-md-4">Artist</th>
+                <th scope="col-md-1">Media Source</th>
+                <th scope="col-md-1"></th>
+              </tr>
+            </thead>
+            <tbody id="jukebox_catalog_list">
+            <tr><td>Back to Black</td><td>Amy Winehouse</td><td>UPLOAD</td><td>Select This Song</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </div> <!-- end container -->
   </section>
-
 <?php
 
     foot();
