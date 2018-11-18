@@ -14,14 +14,9 @@ function viewJukebox($profile, $media)
     $userId    = getUserSession("userId");
     $username  = getUserSession("userName");
     $passcode  = getUserSession("userPasscode");
-    if($userId == $jukeboxId)
-        $select="yes";
-    else
-        $select="no";
     
     head();
-    nav();
-            
+    nav();            
 ?>
   <section id="about">
     <div class="container">
@@ -63,7 +58,13 @@ function viewJukebox($profile, $media)
             <?php if($media[0]->mediaSource=='UPLOAD'){ echo "\n"; ?>
               <td>
                 <?php echo "<a href=\"javascript:onclick=playNextSong(this,'".$username."','".$passcode."',".$jukeboxId.");\">\n" ?>
-                <button type="submit" name="submit" class="btn btn-primary btn-lg" >Play Next Song</button>
+                <button type="submit" name="submit" class="btn btn-primary btn-lg" >
+                <?php if($userId == $jukeboxId)
+                          echo "Play Next Song";
+                      else
+                          echo "Play This Song";
+                ?>
+                </button>
                 </a>
               </td>
               <td>
