@@ -24,6 +24,7 @@ if($user)
 else
     $photofile = realpath($_SERVER['DOCUMENT_ROOT'])."/images/defaultProfile.jpeg";
 
+error_log($photofile,0);
 $getInfo = getimagesize($photofile);
 header('Content-type: '. $getInfo['mime']);
 ob_clean();

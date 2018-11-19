@@ -34,11 +34,11 @@ function nav()
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black; color: white">
                <?php if(isAdminLoginOK()) { echo "\n"; ?>
-                <li><a href="#why">What-Why-How?</a></li>
+                <!-- <li><a href="#why">What Why How?</a></li> -->
                 <?php if(hasPermission('canJukeboxAdmin')) { echo "\n"; ?>
                 <li><a href="/user/index.php?func=edit_catalog">My-Catalog</a></li>
                 <?php } echo "\n"; ?>
-                <li><a href="/user/index.php?func=find_jukebox">Jukebox's</a></li>
+                <li><a href="/user/index.php?func=find_jukebox">Find-a-Jukebox</a></li>
                 <li><a href="/user/index.php?func=edit_profile">My-Profile</a></li>
                 <li><a href="/login/index.php?func=logout">Logout</a></li>
                <?php } else { echo "\n"; ?>

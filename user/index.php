@@ -7,34 +7,37 @@ siteSession();
 
 if(isAdminLoginOK())
 {
-    $func         = getRequest("func");
-    $jukeboxId    = getRequest("jukeboxId");
+    switch(getRequest("func"))
+    {
+        case "player": 
+        playJukebox(getRequest("jukeboxId"));
+        break;
 
-    if($func=="player")
-    {
-        playJukebox($jukeboxId);
-    }
-    elseif($func=="find_jukebox")
-    {
-        findJukebox();
-    }
-    elseif($func=="edit_profile")
-    {
-        editProfile();
-    }
-    elseif($func == "edit_catalog")
-    {
-        editCatalog();
-    }
-    else
-    {
-        // This should never happen
-        // Else need to debug 
+        case "find_jukebox":
+        findJukebox(getRequest("userId"));
+        break;
+   
+        case "edit_profile":
+        editProfile(getUserSession("userId"));
+        break;
+    
+        case "edit_catalog":
+        editCatalog(getRequest("userId"));
+        break;
+
+        default:
+        //---------------------------------
+        // This never happens...
+        // unless we got a bug or a hacker
+        //---------------------------------
         redirect("/");
     }
 }
 else
 {
+    //------------------------------------
+    // if we're not logged in, do that...
+    //------------------------------------
     redirect("/login/");
 }
 
@@ -53,15 +56,26 @@ function playJukebox($id)
     viewJukebox($profile, $media);
 }
 
+/*
+ * editProfile -- edit user profile and allow 
+ *                for changing profile photo
+ *                password and becoming a jukebox
+ *
+ * @param $id -- this is the userId
+ */
+function editProfile($id)
+{
+    $db       = new UserProfileModel();
+    $profile  = $db->find($id);
+
+    viewEditProfile($profile);
+}
+
 function findJukebox()
 {
     redirect("/");
 }
 
-function editProfile()
-{
-    redirect("/");    
-}
 
 function editCatalog()
 {

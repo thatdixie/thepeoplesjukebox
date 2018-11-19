@@ -1,6 +1,6 @@
 <?php
 /**
- * Get/Play next song on a jukbox queue
+ * Get/Play song on a jukbox queue
  *
  * @author  dixie
  **
