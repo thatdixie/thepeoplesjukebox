@@ -26,6 +26,8 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
     $db           = new UserPlaylistModel();
     $playlist     = $db->findUserPlaylist($jukeboxId);
     $select_limit = false;
+    $select_max   = maxUserPlayLimit(); 
+    $select_count =0;
     
     if($playlist)
         $count = count($playlist);
@@ -36,14 +38,25 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
     {
         if($playlist[$i]->playlistUserId == $requestId)
         {
-            $select_limit = true;
-            break;
+            if($select_count++ == $select_max)
+            {
+                $select_limit = true;
+                break;
+            }
         }
     }
 
     if($select_limit)
     {       
-        jsonErrorResponse("200", "USER_PLAY_LIMIT");
+        $notPlaylist                  = new Playlist();
+        $notPlaylist->userId          = $jukeboxId;
+        $notPlaylist->mediaId         = $mediaId;
+        $notPlaylist->playlistUserId  = $requestId;
+        $notPlaylist->playlistOrder   = $select_max;
+        $notPlaylist->playlistCreated = sqlNow();
+        $notPlaylist->playlistModified= sqlNow();
+        $notPlaylist->playlistStatus  = "PLAY_LIMIT";
+        jsonResponse($notPlaylist->makeJSON());
     }
     else
     {
@@ -56,7 +69,7 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         $newPlaylist->playlistModified= sqlNow();
         $newPlaylist->playlistStatus  = 'QUEUE';
         $newPlaylist = $db->insert2($newPlaylist);
-        jsonResponse(json_encode($newPlaylist));
+        jsonResponse($newPlaylist->makeJSON());
     }
 }
 else

@@ -14,7 +14,7 @@ if(isAdminLoginOK())
         break;
 
         case "find_jukebox":
-        findJukebox(getRequest("userId"));
+        findJukebox(getUserSession("userId"));
         break;
    
         case "edit_profile":
@@ -22,7 +22,7 @@ if(isAdminLoginOK())
         break;
     
         case "edit_catalog":
-        editCatalog(getRequest("userId"));
+        editCatalog(getUserSession("userId"));
         break;
 
         default:

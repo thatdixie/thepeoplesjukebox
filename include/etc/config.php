@@ -31,4 +31,10 @@ function photoData()
 {
     return("/opt/data/jukebox/");
 }
+
+function maxUserPlayLimit()
+{
+    return(2);
+}
+
 ?>

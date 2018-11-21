@@ -121,17 +121,24 @@ function searchCatalog() {
     songList.innerHTML="";
     
     $.getJSON(searchUrl, function(songs) {
-        var l = songs.length;
-        if(l!= 0)
-        {
-            pageSection.style.visibility='visible';
-            for(i=0; i < l; i++)
-	    {
-	        songList.innerHTML+="<tr><td>"+songs[i].mediaTitle+
-		                   "</td><td>"+songs[i].mediaArtist+
-		    "</td><td>"+songs[i].mediaSource+
-		    "</td><td><a href=\"javascript:pickJukeboxSong("+songs[i].mediaId+");\">Select</a></td></tr>";
+        if(songs != null)
+	{
+            var l = songs.length;
+            if(l!= 0)
+            {
+                pageSection.style.visibility='visible';
+                for(i=0; i < l; i++)
+	        {
+	            songList.innerHTML+="<tr><td>"+songs[i].mediaTitle+
+		                       "</td><td>"+songs[i].mediaArtist+
+		        "</td><td>"+songs[i].mediaSource+
+		        "</td><td><a href=\"javascript:pickJukeboxSong("+songs[i].mediaId+");\">Select</a></td></tr>";
+	        }
 	    }
+	}
+	else
+	{
+            alert("Oops! we had a problem! Try Again!");	    
 	}
     });
 }
@@ -162,8 +169,23 @@ function pickJukeboxSong(mediaId) {
 	                       '&passcode='+passcode+
 	                       '&jukeboxId='+jukeboxId+
 	                       '&mediaId='+mediaId;
-    $.getJSON(queueUrl, function() {
-        alert("Song request sent!");
+    $.getJSON(queueUrl, function(playlist) {
+	if(playlist != null)
+	{
+            if(playlist.playlistStatus == 'PLAY_LIMIT')
+	    {
+                alert("You've already added "+playlist.playlistOrder+" songs!");
+	    }
+	    else
+	    {
+		order = playlist.playlistOrder-1;
+                alert("Your song is number "+order+" in the list!");	    
+	    }
+	}
+	else
+	{
+            alert("Oops! we had a problem! Try Again!");
+	}
     });
 }
 
