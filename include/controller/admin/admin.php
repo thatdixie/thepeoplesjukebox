@@ -37,7 +37,8 @@ function adminLogin($u, $p)
         setUserSession('userPasscode' , $user->userPasscode);
         setUserSession('nextLastLogin', sqlNow());
 	    getUserPermissions($user->userId);
-
+        setUserSession('userAgent'    , $_SERVER['HTTP_USER_AGENT']);
+        //error_log($_SERVER['HTTP_USER_AGENT'],0);
 	    return(true);
     }
     else

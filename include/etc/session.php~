@@ -211,19 +211,4 @@ function isIphone()
         return(false);
 }
 
-/*
- * returns true if logged-in user is on an iphone
- * and AppleCoreMedia is the current user agent
- *
- * @return true or false
- * 
-*/			
-function isIphoneUI()
-{
-    if(strpos($_SERVER['HTTP_USER_AGENT'], 'AppleCoreMedia') !== false)
-        return(true);
-    else
-        return(false);
-}
-
 ?>

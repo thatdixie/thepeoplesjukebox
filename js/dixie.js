@@ -33,6 +33,57 @@ jukeboxId=0;
 URL ='';
 file='';
 semaphore =0;
+select ='no';
+
+//-----------------------------------------------------------------------------------
+// Plays current or next song on iPhone
+//
+// soundfile is created by manually manufacturing /mp3player/mp3player.php URL
+// since waiting for callback creates a race condition and iphone disables play
+// from inside a callback (becasue Apple is EVIL) and play MUST result from a user
+// click...
+//------------------------------------------------------------------------------------
+function playOnIphone(p, u, pc, jb)
+{
+    page=p;
+    username=u;
+    passcode=pc;
+    jukeboxId=jb;
+    
+    //--------------------------------------------------------
+    // you can only select playnext if you're the jukebox.
+    // mp3IphonePlayer.php knows this.
+    // As does the REST API...
+    //--------------------------------------------------------
+    userId   = document.getElementById("userId").value;
+    soundfile ='http://thepeoplesjukebox.com/mp3player/mp3IphonePlayer.php?jukeboxId='+jukeboxId+'&userId='+userId;
+
+    //--------------------------------------------------------
+    // We use the API to get currently playing information.
+    //--------------------------------------------------------
+    URL='/api/play_next?username='+username+'&passcode='+passcode+'&jukeboxId='+jukeboxId;
+    $.getJSON(URL, function(media) {
+        document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
+    });
+    
+    if(page.mp3)
+    {
+        //page.mp3.pause();
+        //page.mp3  = null;
+        //page.mp3  = new Audio(soundfile);
+        //page.mp3.loop = false;
+ 	//page.mp3.play();
+//        page.currentTime =0;
+    }
+    else
+    {	
+        page.mp3  = new Audio(soundfile);
+        page.currentTime =0;
+        page.mp3.loop = false;
+        page.mp3.play();
+    }
+}
+
 
 //-------------------------------------------
 // This function plays the next song on
@@ -40,6 +91,17 @@ semaphore =0;
 //-------------------------------------------
 function playNextSong(p, u, pc, jb) {
 
+    //---------------------------------------------
+    // check to see if this is an iphone...
+    //---------------------------------------------
+    if(document.getElementById("iphone_container") != null)
+    {
+	playOnIphone(p,u,pc,jb);
+	return;
+    }
+    //-----------------------------------------------
+    // if not iPhone we use the REST API normally...
+    //-----------------------------------------------
     page=p;
     username=u;
     passcode=pc;
@@ -188,6 +250,8 @@ function pickJukeboxSong(mediaId) {
 	}
     });
 }
+
+
 
 
 //-------------------------------------

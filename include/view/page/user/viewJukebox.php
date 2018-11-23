@@ -14,13 +14,21 @@ function viewJukebox($profile, $media)
     $userId    = getUserSession("userId");
     $username  = getUserSession("userName");
     $passcode  = getUserSession("userPasscode");
+    if(isIphone())
+        $container_id ="iphone_container";
+    else
+        $container_id ="not_iphone_container";
     
     head();
     nav();            
 ?>
   <section id="about">
-    <div class="container">
+    <div class="container" id=<?php echo "\"$container_id\"" ?> >
     <br><br>
+    <?php 
+    if(isIphone()) 
+        echo "<b>(Audio Playback for iPhone is currently for demostration purposes ONLY!)</b><br><br>\n";
+    ?>
       <div class="row">
         <div class="col-md-3 col-md-offset-1">
           <?php echo "<img src=\"/user/photoviewer.php?userId=".$jukeboxId."\">"; ?>
@@ -86,6 +94,7 @@ function viewJukebox($profile, $media)
       <div class="row">
         <div class="col-md-5 col-md-offset-1">
           <form id="searchForm" action="#">
+          <input type="hidden" id="userId"    value=<?php echo "\"$userId\"";  ?> >
           <input type="hidden" id="username"  value=<?php echo "\"$username\"";  ?> >
           <input type="hidden" id="passcode"  value=<?php echo "\"$passcode\"";  ?> >
           <input type="hidden" id="jukeboxId" value=<?php echo "\"$jukeboxId\""; ?> >
