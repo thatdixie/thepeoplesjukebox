@@ -26,7 +26,7 @@ $isIphoneUI = isAppleUI();
 // and it's NOT the "AppleCoreMedia" UserAgent that
 // is weirdly sent by Apple devices...
 //---------------------------------------------------
-if(getRequest(($jukeboxId==$userId) && !$isIphoneUI)
+if(getRequest(($jukeboxId==$userId) && !$isIphoneUI))
     $media = $db->findNextInQueue($id);
 else
     $media = $db->getCurrentlyPlaying($id);
