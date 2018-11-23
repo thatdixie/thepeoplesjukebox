@@ -19,7 +19,7 @@ siteSession();
 $db         = new UserPlaylistModel();
 $jukeboxId  = getRequest("jukeboxId");
 $userId     = getRequest("userId");
-$isIphoneUI = isAppleUI();
+$isIphoneUI = isIphoneUI();
 
 //---------------------------------------------------
 // We only select next song if the user IS a jukebox
@@ -27,11 +27,11 @@ $isIphoneUI = isAppleUI();
 // is weirdly sent by Apple devices...
 //---------------------------------------------------
 if(getRequest(($jukeboxId==$userId) && !$isIphoneUI))
-    $media = $db->findNextInQueue($id);
+    $media = $db->findNextInQueue($jukeboxId);
 else
-    $media = $db->getCurrentlyPlaying($id);
+    $media = $db->getCurrentlyPlaying($jukeboxId);
 
-$mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+$mp3file = mp3Data().$jukeboxId."/songs/".$media[0]->mediaFile;
 $size    = filesize($mp3file);
 
 header("Accept-Ranges: bytes");
