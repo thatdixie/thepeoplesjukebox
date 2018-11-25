@@ -8,7 +8,7 @@ require      "MediaModel.php";
  * map User Media data. 
  *
  * @author  megan
- * @version 181008
+ * @version 181124
  *********************************************************************
  */
 class UserMediaModel extends MediaModel
@@ -16,26 +16,36 @@ class UserMediaModel extends MediaModel
     /*********************************************************
      * Returns a Media by userId (it's the jukebox catalog)
      *
-     * @return media
+     * @param  $id
+     * @return $medias
      *********************************************************
      */
     public function findByUserId($id)
     {
-        $query="SELECT mediaId,".
-                      "userId,".
-                      "mediaFile,".
-                      "mediaSource,".
-                      "mediaArtist,".
-                      "mediaTitle,".
-                      "mediaYear,".
-                      "mediaDuration,".
-                      "mediaCreated,".
-                      "mediaModified,".
-                      "mediaStatus ".                      		               
-	       "FROM media ".
-	       "WHERE mediaStatus='ACTIVE' AND userId=".$id;
+        $query="SELECT media.mediaId,".
+                      "media.userId,".
+                      "media.mediaFile,".
+                      "media.mediaSource,".
+                      "media.mediaArtist,".
+                      "media.mediaTitle,".
+                      "media.mediaYear,".
+                      "media.mediaDuration,".
+                      "media.mediaCreated,".
+                      "media.mediaModified,".
+                      "media.mediaStatus ".                      		               
+	       "FROM media, upload ".
+           "WHERE media.mediaStatus='ACTIVE' ".
+             "AND media.userId=upload.userId ".
+             "AND upload.uploadStatus='COMPLETE' ".
+             "AND media.userId=".$id;
 
-        return($this->selectDB($query, "Media"));
+        $medias = $this->selectDB($query, "Media");
+        if(count($medias) == 0)
+        {
+            $medias[0] = new Media();
+            $medias[0]->mediaStatus="Upload in Progress";
+        }
+        return($medias);
     }
 
 
@@ -59,19 +69,22 @@ class UserMediaModel extends MediaModel
             $search = " ";
         }
 
-        $query="SELECT mediaId,".
-                      "userId,".
-                      "mediaFile,".
-                      "mediaSource,".
-                      "mediaArtist,".
-                      "mediaTitle,".
-                      "mediaYear,".
-                      "mediaDuration,".
-                      "mediaCreated,".
-                      "mediaModified,".
-                      "mediaStatus ".                      		               
-	       "FROM media ".
-            "WHERE mediaStatus='ACTIVE' AND userId=".$id." ".$search;
+        $query="SELECT media.mediaId,".
+                      "media.userId,".
+                      "media.mediaFile,".
+                      "media.mediaSource,".
+                      "media.mediaArtist,".
+                      "media.mediaTitle,".
+                      "media.mediaYear,".
+                      "media.mediaDuration,".
+                      "media.mediaCreated,".
+                      "media.mediaModified,".
+                      "media.mediaStatus ".           		               
+	       "FROM media, upload ".
+           "WHERE mediaStatus='ACTIVE' ".
+             "AND media.userId=upload.userId ".
+             "AND upload.uploadStatus='COMPLETE' ".      
+             "AND media.userId=".$id." ".$search;
 
         return($this->selectDB($query, "Media"));
     }
@@ -136,7 +149,6 @@ class UserMediaModel extends MediaModel
 
         return($this->selectDB($query, "Media"));
     }
-
 }
 
 ?>
