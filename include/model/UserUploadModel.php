@@ -34,5 +34,5 @@ class UserUploadModel extends UploadModel
         return($this->selectDB($query, "Upload"));
     }
 
-
+}
 ?>

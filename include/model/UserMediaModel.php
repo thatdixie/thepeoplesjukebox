@@ -89,6 +89,33 @@ class UserMediaModel extends MediaModel
         return($this->selectDB($query, "Media"));
     }
 
+    /*********************************************************
+     * Returns a Media by userId (it's the jukebox catalog)
+     * This will find ALL media both ACTIVE or INACTIVE 
+     * used by processUpload.php and possibly others.
+     *
+     * @param  $id
+     * @return $medias
+     *********************************************************
+     */
+    public function findAllByUserId($id)
+    {
+        $query="SELECT media.mediaId,".
+                      "media.userId,".
+                      "media.mediaFile,".
+                      "media.mediaSource,".
+                      "media.mediaArtist,".
+                      "media.mediaTitle,".
+                      "media.mediaYear,".
+                      "media.mediaDuration,".
+                      "media.mediaCreated,".
+                      "media.mediaModified,".
+                      "media.mediaStatus ".                      		               
+	       "FROM media WHERE media.userId=".$id;
+
+        return($this->selectDB($query, "Media"));
+    }
+    
     
     /*********************************************************
      * Returns a Media by userId (jukebox) 
@@ -148,6 +175,55 @@ class UserMediaModel extends MediaModel
            "AND playlist.userId=".$id." ORDER BY playlist.playlistOrder";
 
         return($this->selectDB($query, "Media"));
+    }
+
+
+    /*********************************************************
+     * Insert an array of Media into jukeboxDB database
+     * Used by processUpload.php and possibly others.
+     *
+     * @param $medias
+     * @return n/a
+     *********************************************************
+     */
+    public function insertArray($medias)
+    {
+        $insert="INSERT INTO media ( ".
+	              "mediaId,".
+                      "userId,".
+                      "mediaFile,".
+                      "mediaSource,".
+                      "mediaArtist,".
+                      "mediaTitle,".
+                      "mediaYear,".
+                      "mediaDuration,".
+                      "mediaCreated,".
+                      "mediaModified,".
+                      "mediaStatus ".                      
+                           ") ".
+               "VALUES ";
+               $values=" ";
+               $i =0;
+               $l =count($medias);
+               foreach($medias as $media)
+               {
+                   $values.="(".
+                      "null,".
+                      " ".$media->userId." ,".
+                      "'".$this->sqlSafe($media->mediaFile)."',".
+                      "'".$this->sqlSafe($media->mediaSource)."',".
+                      "'".$this->sqlSafe($media->mediaArtist)."',".
+                      "'".$this->sqlSafe($media->mediaTitle)."',".
+                      "'".$this->sqlSafe($media->mediaYear)."',".
+                      "'".$this->sqlSafe($media->mediaDuration)."',".
+                      "'".$this->sqlSafe($media->mediaCreated)."',".
+                      "'".$this->sqlSafe($media->mediaModified)."',".
+                      "'".$this->sqlSafe($media->mediaStatus)."' ".                      
+                       ")";
+                   if(++$i != $l)
+                       $values.=", ";
+               }
+               $this->executeQuery($insert." ".$values);
     }
 }
 
