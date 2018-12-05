@@ -24,10 +24,11 @@ function nav()
             </div>
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black; color: white">
+                <li><a href="https://documenter.getpostman.com/view/5542552/RWgrxHCn#186fb371-4427-4103-ba44-7286c455bcb8">API</a></li>
                 <li><a href="/capstone/capstoneER.pdf">ER Diagram</a></li>
-                <li><a href="/capstone/">White Paper</a></li>
-                <li><a href="/capstone/jukeboxDB_Model.png">Object Diagram</a></li>
+                <li><a href="/capstone/jukeboxDB_Model.png">Object Model</a></li>
                 <li><a href="/capstone/javadocs/">Android Javadocs</a></li>
+                <li><a href="/capstone/">White Paper</a></li>
               </ul>
             </div>
           </div>
