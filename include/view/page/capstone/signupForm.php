@@ -7,13 +7,16 @@
 */			
 function signup()  
 {
+    head();
+    nav();
+
 ?>
   <section id="contact">
     <div class="contact-page" style="background-color: grey">
       <div class="container">
         <div class="center">
           <br><br><br>
-          <h2>Signup FREE</h2>						
+          <h2>Capstone Signup</h2>						
         </div> 
       <div class="row contact-wrap">						
         <div class="status alert alert-success" style="display: none"></div>
@@ -52,5 +55,6 @@ function signup()
   </section>
 
 <?php
+    foot();
 }
 ?>

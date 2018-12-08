@@ -19,7 +19,7 @@ function login()
         </div> 
         <div class="row contact-wrap">						
           <div class="status alert alert-success" style="display: none"></div>
-            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="#">
+            <form id="main-contact-form" class="contact-form" name="contact-form" method="post" action="/capstone/index.php?func=login">
               <div class="wow fadeInDown">
                 <div class="col-sm-5 col-sm-offset-3">
                   <div class="form-group">

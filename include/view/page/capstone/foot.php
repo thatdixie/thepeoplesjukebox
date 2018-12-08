@@ -40,7 +40,7 @@ function foot()
   <script src="/js/wow.min.js"></script>
   <script src="/js/jquery.easing.min.js"></script>	
   <script src="/js/main.js"></script>
-  <script src="/capstone/js/dixie.js"></script>
+  <script src="/js/dixie.js"></script>
   </body>
 </html>
 
