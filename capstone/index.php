@@ -10,7 +10,7 @@ $db2      = new UserMediaModel();
 $profile  = $db->find(3);
 $media    = $db2->findCurrentlyPlaying(3);
 
-setUserSession("userId", 88);
+setUserSession("userId", 3);
 setUserSession("userName", "cyrusface@gmail.com");
 setUserSession("userPasscode", $profile[0]->userPasscode);
 
