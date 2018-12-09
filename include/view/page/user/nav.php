@@ -36,7 +36,7 @@ function nav()
                <?php if(isAdminLoginOK()) { echo "\n"; ?>
                 <!-- <li><a href="#why">What Why How?</a></li> -->
                 <?php if(hasPermission('canJukeboxAdmin')) { echo "\n"; ?>
-                <li><a href="/user/index.php?func=edit_catalog">My-Catalog</a></li>
+                <li><a href="/user/index.php?func=player&jukeboxId=<?php echo getUserSession("userId"); ?>" >My-Catalog</a></li>
                 <?php } echo "\n"; ?>
                 <li><a href="/user/index.php?func=find_jukebox">Find-a-Jukebox</a></li>
                 <li><a href="/user/index.php?func=edit_profile">My-Profile</a></li>
