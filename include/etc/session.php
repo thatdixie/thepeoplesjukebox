@@ -205,7 +205,7 @@ function setPermission($p)
 */			
 function isIphone()
 {
-    if(strpos(getUserSession('userAgent'), 'iPhone') !== false)
+    if(strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') !== false)
         return(true);
     else
         return(false);

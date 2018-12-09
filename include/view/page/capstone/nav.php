@@ -24,7 +24,7 @@ function nav()
             </div>
             <div class="collapse navbar-collapse" id="menu">
               <ul class="nav navbar-nav navbar-right" style="background-color: black; color: white">
-                <li><a href="/capstone/">White Paper</a></li>
+                <li><a href="/capstone/HunterCapstoneWhitePaper.pdf">White Paper</a></li>
                 <li><a href="/capstone/capstoneER.pdf">ER Diagram</a></li>
                 <li><a href="/capstone/jukeboxDB_Model.png">Object Model</a></li>
                 <li><a href="/capstone/javadocs/">Android Javadocs</a></li>

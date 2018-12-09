@@ -15,8 +15,8 @@ function foot()
         <div class="col-md-6 col-md-offset-3">
           <div class="text-center">
             <a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
-          </div>
-          &copy; <?php echo date("Y"); ?>&nbsp;&nbsp;Capstone Jukebox by Megan Williams
+          </div><a href="/">
+          &copy; <?php echo date("Y"); ?>&nbsp;&nbsp;Capstone by Megan Williams</a>
         </div>
         <div class="top-bar">			
           <div class="col-lg-12">
