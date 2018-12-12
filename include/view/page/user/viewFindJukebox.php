@@ -28,7 +28,6 @@ function viewFindJukebox($profile)
         </div>
         <div class="col-md-8">
           <h3>
-          <form id="searchForm" action="javascript:searchProfile();">
           <table>
             <tr>
               <td>&nbsp;</td>
@@ -45,17 +44,19 @@ function viewFindJukebox($profile)
             </tr>
             <tr>
               <td>
+              <form id="searchForm" action="javascript:searchProfile();">
               <input type="hidden" id="userId"    value=<?php echo "\"$userId\"";  ?> >
               <input type="hidden" id="username"  value=<?php echo "\"$username\"";  ?> >
               <input type="hidden" id="passcode"  value=<?php echo "\"$passcode\"";  ?> >
               <input type="text"   id="formSearchKey" >
+              </form>     
            </td>
               <td>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="button"  id="searchButton" class="btn btn-primary btn-lg" name="submit" value="Find Jukebox" javascript:onclick="searchProfile();">
+                <input type="button"  id="searchButton" class="btn btn-primary btn-lg" name="submit" value="Find Jukebox" onclick="searchProfile();"/>
               </td>
               <td>&nbsp;</td>
             </tr>
@@ -71,7 +72,6 @@ function viewFindJukebox($profile)
               <td>&nbsp;</td><td>&nbsp;</td>
             </tr>
           </table>
-          </form>     
           </h3>  
         </div>
       </div> <!-- end row -->
@@ -99,7 +99,6 @@ function viewFindJukebox($profile)
 
     foot();
 }
-
 ?>
 
 

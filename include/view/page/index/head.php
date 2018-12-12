@@ -34,7 +34,6 @@ function head()
 <?php
 }
 
-
 /**
  * pageTitle -- sets page name 
  * 
@@ -45,6 +44,4 @@ function pageTitle($page)
 {
     setUserSession("page", $page);
 }
-
-
 ?>
