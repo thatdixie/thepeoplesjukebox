@@ -61,12 +61,10 @@ function viewJukebox($profile, $media)
               <td><b>When:</b></td><td><?php echo $profile[0]->userWorkHours; ?></td>
             </tr>
             <tr>
-              <td>
-                <a href="#">
-                  <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button>
-                </a>
-              </td>
               <td>&nbsp;</td>
+              <td>
+                <a href="#">Get Directions</a>
+              </td>
             </tr>
             <tr>
               <td>&nbsp;</td><td>&nbsp;</td>
