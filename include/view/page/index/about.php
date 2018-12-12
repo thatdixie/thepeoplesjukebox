@@ -7,6 +7,7 @@
 */			
 function about($profiles)  
 {
+    pageTitle("The Peoples Jukebox");
 ?>
   <section id="about">
     <div class="container">

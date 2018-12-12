@@ -18,7 +18,7 @@ function head()
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="keywords" content="Music, jukebox" />
     <meta name="description" content="A Free Jukebox for Everyone"/>
-    <title>ThePeoplesJukebox.com</title>
+    <title><?php echo getUserSession("page"); ?></title>
     <link rel="apple-touch-icon" href="touch-icon-iphone.png">
     <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -33,4 +33,18 @@ function head()
   <body>
 <?php
 }
+
+
+/**
+ * pageTitle -- sets page name 
+ * 
+ * @param $page -- page name
+ *
+ */			
+function pageTitle($page)
+{
+    setUserSession("page", $page);
+}
+
+
 ?>

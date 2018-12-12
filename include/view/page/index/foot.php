@@ -8,7 +8,6 @@
 function foot()  
 {
 ?>
-
   <footer id="footer" class="midnight-blue" style="background-color: black">
     <div class="container">
       <div class="row">
@@ -22,10 +21,22 @@ function foot()
           <div class="col-lg-12">
             <div class="social">
             <ul class="social-share">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="/contact/"><i class="fa fa-comment"></i></a></li>
+            <li>
+              <a href="/contact/">
+                <i class="fa fa-comment"></i>
+              </a>
+            </li>
+            <li>
+              <a target="social" href="https://www.facebook.com/The-Peoples-Jukebox-274008910130084/">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <!--<li><a href="#"><i class="fa fa-instagram"></i></a></li> -->
+            <li>
+              <a target="social" href="https://twitter.com/JukeboxPeoples">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
             </ul> 
 	      </div>
           </div>

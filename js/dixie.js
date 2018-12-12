@@ -252,6 +252,61 @@ function pickJukeboxSong(mediaId) {
 }
 
 
+//----------------------------------------------------
+// search for Jukebox profiles.
+//
+// Uses REST API call to /search_profile/ with params: 
+//
+// * username
+// * passcode
+// * searchkey
+//---------------------------------------------------
+function searchProfile() {
+
+    //-------------------------------------------------------
+    // Here are the parameters we gathered from the form.
+    //-------------------------------------------------------
+    var username = document.getElementById("username").value;
+    var passcode = document.getElementById("passcode").value;
+    var searchKey= document.getElementById("formSearchKey").value;
+    
+    //-------------------------------------------------------
+    // We're gonna make this section visiable after search
+    //-------------------------------------------------------
+    var pageSection=document.getElementById("find_profile_row");
+
+    //------------------------------------------------------
+    // Manufacture a URL that we send to REST API function
+    //------------------------------------------------------
+    searchUrl ='/api/search_profile?username='+username+
+	                          '&passcode='+passcode+
+	                          '&searchKey='+searchKey;
+
+    userList = document.getElementById("jukebox_profile_list");
+    userList.innerHTML="";
+    
+    $.getJSON(searchUrl, function(users) {
+        if(users != null)
+	{
+            var l = users.length;
+            if(l!= 0)
+            {
+                pageSection.style.visibility='visible';
+                for(i=0; i < l; i++)
+	        {
+	            userList.innerHTML+="<tr><td>"+users[i].nickName+" ("+users[i].firstName+" "+users[i].lastName+")"+
+		                       "</td><td>"+users[i].likes+
+		        "</td><td>"+users[i].workplace+
+		        "</td><td><a href=\"/user/index?func=player&jukeboxId="+users[i].userId+"\">Go to Jukebox</a></td></tr>";
+	        }
+	    }
+	}
+	else
+	{
+            alert("Oops! we had a problem! Try Again!");	    
+	}
+    });
+}
 
 
 //-------------------------------------

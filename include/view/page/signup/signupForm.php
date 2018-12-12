@@ -7,6 +7,7 @@
 */			
 function signup()  
 {
+    pageTitle("Signup FREE");
 ?>
   <section id="contact">
     <div class="contact-page" style="background-color: grey">

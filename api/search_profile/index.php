@@ -31,6 +31,7 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         for($i=0; $i<$c; $i++)
         {
             $profiles[$i] = new Profile();
+            $profiles[$i]->userId    = $users[$i]->userId;
             $profiles[$i]->firstName = $users[$i]->userFirstName;
             $profiles[$i]->lastName  = $users[$i]->userLastName;
             $profiles[$i]->nickName  = $users[$i]->userNickName;
@@ -55,6 +56,7 @@ else
 
 class Profile
 {
+    public $userId    =0;
     public $firstName ="";
     public $lastName  ="";
     public $nickName  ="";

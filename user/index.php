@@ -5,6 +5,20 @@ require_once "../include/model/UserProfileModel.php";
 require_once "../include/model/UserMediaModel.php";
 siteSession();
 
+/**
+ * This is the /user controller.
+ *
+ * functions:
+ * --------------
+ * playJukebox()
+ * findJukebox()
+ * editProfile()
+ * editCatalog()
+ *
+ * @author    Dixie
+ * @copyright 2018
+ *
+ */
 if(isAdminLoginOK())
 {
     switch(getRequest("func"))
@@ -41,7 +55,7 @@ else
     redirect("/login/");
 }
 
-/*
+/**
  * playJukebox -- set up user profile for jukebox
  *
  * @param $id -- this is the jukeboxId
@@ -56,7 +70,7 @@ function playJukebox($id)
     viewJukebox($profile, $media);
 }
 
-/*
+/**
  * editProfile -- edit user profile and allow 
  *                for changing profile photo
  *                password and becoming a jukebox
@@ -71,9 +85,18 @@ function editProfile($id)
     viewEditProfile($profile);
 }
 
-function findJukebox()
+/**
+ * findJukebox -- show page with find jukebox 
+ *                search form.
+ *
+ * @param $id -- this is the userId
+ */
+function findJukebox($id)
 {
-    redirect("/");
+    $db       = new UserProfileModel();
+    $profile  = $db->find($id);
+    
+    viewfindJukebox($profile);
 }
 
 

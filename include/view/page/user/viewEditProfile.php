@@ -14,7 +14,8 @@ function viewEditProfile($profile)
     $userId    = getUserSession("userId");
     $username  = getUserSession("userName");
     $passcode  = getUserSession("userPasscode");
-    
+
+    pageTitle("Edit Profile");
     head();
     nav();            
 ?>

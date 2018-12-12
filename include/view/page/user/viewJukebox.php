@@ -18,7 +18,8 @@ function viewJukebox($profile, $media)
         $container_id ="iphone_container";
     else
         $container_id ="not_iphone_container";
-    
+
+    pageTitle($profile[0]->userNickName."'s Jukebox");
     head();
     nav();            
 ?>
@@ -60,8 +61,16 @@ function viewJukebox($profile, $media)
               <td><b>When:</b></td><td><?php echo $profile[0]->userWorkHours; ?></td>
             </tr>
             <tr>
-              <td>&nbsp;</td><td>&nbsp;</td>
+              <td>
+                <a href="#">
+                  <button type="submit" name="submit" class="btn btn-primary btn-lg" >Get Directions</button>
+                </a>
+              </td>
+              <td>&nbsp;</td>
             </tr>
+            <tr>
+              <td>&nbsp;</td><td>&nbsp;</td>
+            </tr>                
             <tr>
             <?php if($media[0]->mediaSource=='UPLOAD'){ echo "\n"; ?>
               <td>
@@ -93,7 +102,7 @@ function viewJukebox($profile, $media)
       <hr>
       <div class="row">
         <div class="col-md-5 col-md-offset-1">
-          <form id="searchForm" action="#">
+          <form id="searchForm" action="javascript:searchCatalog();">
           <input type="hidden" id="userId"    value=<?php echo "\"$userId\"";  ?> >
           <input type="hidden" id="username"  value=<?php echo "\"$username\"";  ?> >
           <input type="hidden" id="passcode"  value=<?php echo "\"$passcode\"";  ?> >
