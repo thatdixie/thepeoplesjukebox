@@ -55,7 +55,7 @@ function viewFindJukebox($profile)
             </tr>
             <tr>
               <td>
-                <input type="button"  id="searchButton" class="btn btn-primary btn-lg" name="submit" value="Find Jukebox" javascript:onclick="searchProfile();">
+                <input type="button"  id="searchButton" class="btn btn-primary btn-lg" name="submit" value="Find Jukebox" onclick="searchProfile();">
               </td>
               <td>&nbsp;</td>
             </tr>
