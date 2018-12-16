@@ -83,7 +83,7 @@ function viewJukebox($profile, $media)
                 </a>
               </td>
               <td>
-                <a href="#" onclick="window.location.reload(true);">
+                <a href="javascript:window.location.reload(true);" onclick="window.location.reload(true);">
                 &nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" name="submit" class="btn btn-primary btn-lg" >Stop</button>
                 </a>
               </td>
