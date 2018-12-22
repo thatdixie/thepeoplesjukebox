@@ -24,11 +24,11 @@ function login()
                 <div class="col-sm-5 col-sm-offset-3">
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="username" class="form-control" required="required">
+                    <input type="text" name="username" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control" required="required">
+                    <input type="text" name="password" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <input type="hidden" name="login" value="yes">
@@ -75,11 +75,11 @@ function userResetForm($username, $resetCode)
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control" required="required">
+                    <input type="text" name="password" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <label>Confirm Password</label>
-                    <input type="text" name="password2" class="form-control" required="required">
+                    <input type="text" name="password2" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <input type="hidden" name="activate" value="yes">

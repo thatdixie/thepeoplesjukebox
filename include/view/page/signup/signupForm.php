@@ -23,15 +23,15 @@ function signup()
               <div class="col-sm-5 col-sm-offset-3">
                 <div class="form-group">
                   <label>First Name *</label>
-                  <input type="text" name="first" class="form-control" required="required">
+                  <input type="text" name="first" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
                 </div>
                 <div class="form-group">
                   <label>Last Name *</label>
-                  <input type="text" name="last" class="form-control" required="required">
+                  <input type="text" name="last" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
                 </div>
                 <div class="form-group">
                   <label>Email *</label>
-                  <input type="email" name="email" class="form-control" required="required">
+                  <input type="email" name="email" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" >
                 </div>
                 <!-- <div class="form-group">
                   <label>Phone</label>

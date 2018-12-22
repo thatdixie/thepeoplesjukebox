@@ -27,7 +27,7 @@ function captcha()
                 <div class="form-group">
 		  <div class="col-xs-5">
                   <img src="{$_SESSION['captcha']['image_src']}" >
-                  <input type="text" name="captchaCode" class="form-control" id="cap1" required="required">
+                  <input type="text" name="captchaCode" class="form-control" id="cap1" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   <input type="hidden" name="captchaPage" value="{$_SESSION['captchaPage']}" >
 	          <button type="submit" name="submit" class="btn btn-primary btn-lg" >I'm not a robot!</button>
 		  </div>
