@@ -24,11 +24,11 @@ function login()
                 <div class="col-sm-5 col-sm-offset-3">
                   <div class="form-group">
                     <label>Email</label>
-                    <input type="text" name="username" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <input type="text" name="username" class="form-control" required="required" autocomplete="on" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <label>Password</label>
-                    <input type="text" name="password" class="form-control" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <input type="text" name="password" class="form-control" required="required" autocomplete="on" autocorrect="off" autocapitalize="off" spellcheck="false">
                   </div>
                   <div class="form-group">
                     <input type="hidden" name="login" value="yes">

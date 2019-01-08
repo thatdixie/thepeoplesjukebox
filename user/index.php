@@ -13,6 +13,8 @@ siteSession();
  * playJukebox()
  * findJukebox()
  * editProfile()
+ * updateProfile()
+ * updatePhoto()
  * editCatalog()
  *
  * @author    Dixie
@@ -33,6 +35,14 @@ if(isAdminLoginOK())
    
         case "edit_profile":
         editProfile(getUserSession("userId"));
+        break;
+
+        case "update_profile":
+        updateProfile(getUserSession("userId"));
+        break;
+        
+        case "update_photo":
+        updatePhoto(getUserSession("userId"));
         break;
     
         case "edit_catalog":
@@ -84,6 +94,43 @@ function editProfile($id)
 
     viewEditProfile($profile);
 }
+
+/**
+ * updateProfile -- update user profile
+ *
+ * @param $id -- this is the userId
+ */
+function updateProfile($id)
+{
+    $db      = new UserProfileModel();
+    $profile = $db->find($id);
+    $user    = $profile[0];
+
+    $user->userFirstName = getRequest('first');
+    $user->userLastName  = getRequest('last');
+    $user->userNickName  = getRequest('nickname');
+    $user->userLikes     = getRequest('likes');
+    $user->userWorkplace = getRequest('where');
+    $user->userWorkHours = getRequest('when');
+    $user->userIsJukebox = getRequest('jukebox');
+    $db->update($user);
+    
+    redirect("/");
+}
+
+/**
+ * updatePhoto -- update user profile photo
+ *
+ * @param $id -- this is the userId
+ */
+function updatePhoto($id)
+{
+    $db       = new UserProfileModel();
+    $profile  = $db->find($id);
+
+    viewEditProfile($profile);
+}
+
 
 /**
  * findJukebox -- show page with find jukebox 

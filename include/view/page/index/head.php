@@ -29,6 +29,7 @@ function head()
 	<link href="/css/animate.css" rel="stylesheet" />
 	<link href="/css/prettyPhoto.css" rel="stylesheet"> 
 	<link href="/css/style.css" rel="stylesheet">	
+    <link href="/css/jasny-bootstrap.css" rel="stylesheet">
   </head>
   <body>
 <?php
