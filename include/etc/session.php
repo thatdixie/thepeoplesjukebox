@@ -198,6 +198,18 @@ function setPermission($p)
 }
 
 /*
+ * UnSet a user permission
+ *
+ * @param  string $p user permission
+ * @return null
+ * 
+*/			
+function unsetPermission($p)
+{
+    unset($_SESSION[$p]);
+}
+
+/*
  * returns true if logged-in user is on an iphone
  *
  * @return true or false

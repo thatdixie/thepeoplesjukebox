@@ -32,11 +32,11 @@ function viewEditProfile($profile)
     <div class="container">
     <br><br>
       <div class="row">
-      <form method="post" action="/user/index.php">
+      <form method="post" action="/user/index.php" enctype="multipart/form-data">
         <div class="col-md-3 col-md-offset-1">
           <!-- <label>Photo:</label> -->
           <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
+            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 256px; height: 256px;">
             <?php echo "<img src=\"/user/photoviewer.php?userId=".$jukeboxId."\">"; ?>
             </div>
             <div>
@@ -49,10 +49,8 @@ function viewEditProfile($profile)
             </div>
           </div>
         </div>
-
         <div class="col-md-8">
           <h3>
-     
           <table>
             <tr>
               <td><b>Username:</b></td>

@@ -31,7 +31,11 @@ if(getRequest(($jukeboxId==$userId) && !$isIphoneUI))
 else
     $media = $db->getCurrentlyPlaying($jukeboxId);
 
-$mp3file = mp3Data().$jukeboxId."/songs/".$media[0]->mediaFile;
+if($media)
+    $mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+else
+    $mp3file = mp3Data()."default/songs/".defaultMediaFile();
+
 $size    = filesize($mp3file);
 
 header("Accept-Ranges: bytes");

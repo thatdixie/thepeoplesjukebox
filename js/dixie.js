@@ -217,6 +217,9 @@ function searchCatalog() {
 //---------------------------------------------------
 function pickJukeboxSong(mediaId) {
 
+    if(mediaId==0)
+	return;
+    
     //-------------------------------------------------------
     // Here are the parameters we gathered from the form.
     //-------------------------------------------------------

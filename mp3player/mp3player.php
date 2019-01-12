@@ -19,7 +19,11 @@ if(getRequest("select") == "yes")
 else
     $media = $db->getCurrentlyPlaying($id);
 
-$mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+if($media)
+    $mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+else
+    $mp3file = mp3Data()."default/songs/".defaultMediaFile();
+    
 $size    = filesize($mp3file);
 
 header("Accept-Ranges: bytes");

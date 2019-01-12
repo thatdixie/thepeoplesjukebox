@@ -36,7 +36,14 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         jsonResponse(json_encode($medias[0]));
     }
     else
-        jsonErrorResponse("500", "Could Not Get Queue");        
+    {
+        $media = new Media();
+        $media->mediaSource = "UPLOAD";
+        $media->mediaArtist = defaultMediaArtist();
+        $media->mediaTitle  = defaultMediaTitle();
+        $media->mediaFile   = pubServerAddress()."/mp3player/mp3player.php?jukeboxId=".$jukeboxId;
+        jsonResponse(json_encode($media));        
+    }
 }
 else
 {

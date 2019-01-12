@@ -1,4 +1,6 @@
 <?php
+$root = realpath($_SERVER['DOCUMENT_ROOT']);
+require_once $root."/include/etc/config.php";
 require_once "JukeboxDB.php";
 require      "MediaModel.php";
 
@@ -39,13 +41,7 @@ class UserMediaModel extends MediaModel
              "AND upload.uploadStatus='COMPLETE' ".
              "AND media.userId=".$id;
 
-        $medias = $this->selectDB($query, "Media");
-        if(count($medias) == 0)
-        {
-            $medias[0] = new Media();
-            $medias[0]->mediaStatus="Upload in Progress";
-        }
-        return($medias);
+        return($this->getMedias($this->selectDB($query, "Media")));
     }
 
 
@@ -86,7 +82,7 @@ class UserMediaModel extends MediaModel
              "AND upload.uploadStatus='COMPLETE' ".      
              "AND media.userId=".$id." ".$search;
 
-        return($this->selectDB($query, "Media"));
+        return($this->getMedias($this->selectDB($query, "Media")));
     }
 
     /*********************************************************
@@ -113,7 +109,7 @@ class UserMediaModel extends MediaModel
                       "media.mediaStatus ".                      		               
 	       "FROM media WHERE media.userId=".$id;
 
-        return($this->selectDB($query, "Media"));
+        return($this->getMedias($this->selectDB($query, "Media")));
     }
     
     
@@ -143,7 +139,7 @@ class UserMediaModel extends MediaModel
            "AND media.userId=playlist.userId ".
            "AND playlist.userId=".$id;
 
-        return($this->selectDB($query, "Media"));
+        return($this->getMedias($this->selectDB($query, "Media")));
     }
 
 
@@ -174,7 +170,7 @@ class UserMediaModel extends MediaModel
            "AND media.userId=playlist.userId ".
            "AND playlist.userId=".$id." ORDER BY playlist.playlistOrder";
 
-        return($this->selectDB($query, "Media"));
+        return($this->getMedias($this->selectDB($query, "Media")));
     }
 
 
@@ -225,6 +221,27 @@ class UserMediaModel extends MediaModel
                }
                $this->executeQuery($insert." ".$values);
     }
-}
 
+    /*********************************************************
+     * This function will create a default Media object
+     * when the results of a media query count is 0
+     *
+     * @param  $medias
+     * @return $medias
+     *********************************************************
+     */
+    private function getMedias($medias)
+    {
+        if(count($medias) == 0)
+        {
+            $medias[0] = new Media();
+            $medias[0]->mediaFile   = defaultMediaFile();
+            $medias[0]->mediaArtist = defaultMediaArtist();
+            $medias[0]->mediaTitle  = defaultMediaTitle();
+            $medias[0]->mediaSource = "UPLOAD";            
+            $medias[0]->mediaStatus = "Upload in Progress";
+        }
+        return($medias);
+    }       
+}
 ?>

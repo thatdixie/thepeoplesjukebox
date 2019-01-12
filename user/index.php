@@ -1,8 +1,12 @@
 <?php
 require_once "../include/view/page/user/indexIncludeFiles.php";
 require_once "../include/etc/session.php";
+require_once "../include/etc/config.php";
+require_once "../include/etc/upload.php";
 require_once "../include/model/UserProfileModel.php";
 require_once "../include/model/UserMediaModel.php";
+require_once "../include/model/User_ugroupModel.php";
+require_once "../include/model/UserUploadModel.php";
 siteSession();
 
 /**
@@ -14,7 +18,6 @@ siteSession();
  * findJukebox()
  * editProfile()
  * updateProfile()
- * updatePhoto()
  * editCatalog()
  *
  * @author    Dixie
@@ -40,11 +43,7 @@ if(isAdminLoginOK())
         case "update_profile":
         updateProfile(getUserSession("userId"));
         break;
-        
-        case "update_photo":
-        updatePhoto(getUserSession("userId"));
-        break;
-    
+            
         case "edit_catalog":
         editCatalog(getUserSession("userId"));
         break;
@@ -101,7 +100,7 @@ function editProfile($id)
  * @param $id -- this is the userId
  */
 function updateProfile($id)
-{
+{    
     $db      = new UserProfileModel();
     $profile = $db->find($id);
     $user    = $profile[0];
@@ -113,22 +112,117 @@ function updateProfile($id)
     $user->userWorkplace = getRequest('where');
     $user->userWorkHours = getRequest('when');
     $user->userIsJukebox = getRequest('jukebox');
-    $db->update($user);
-    
-    redirect("/");
-}
-
-/**
- * updatePhoto -- update user profile photo
- *
- * @param $id -- this is the userId
- */
-function updatePhoto($id)
-{
-    $db       = new UserProfileModel();
-    $profile  = $db->find($id);
-
-    viewEditProfile($profile);
+    $user->userModified  = sqlnow();
+    if(isFileUploaded())
+    {
+        //-------------------------------------
+        // make sure user has a data directory
+        //-------------------------------------
+        $udir= photoData().$id;
+        $dir = $udir."/photos/";
+        
+        if(!file_exists($udir))
+            mkdir($udir);
+        if(!file_exists($dir))
+            mkdir($dir);
+        //------------------------------------
+        // Save uploaded photo...
+        //------------------------------------
+        $file =saveUploadedPhoto($dir);
+        if($file)
+        {
+            //-------------------------------------------------------
+            // resize image to width 256 and proportional height...
+            //-------------------------------------------------------
+            exec("convert ".$dir.$file." -resize 256 ".$dir.$file." > /dev/null");
+            $user->userPhoto = $file;
+        }
+        else
+        {
+            error_log("Saving uploaded file failed...",0);
+            $user->userPhoto = $profile[0]->userPhoto;
+        }
+    }
+    //-------------------------------------------
+    // check values for goodness before updating
+    //-------------------------------------------
+    if((!$user->userFirstName)
+     ||(!$user->userLastName)
+     ||(!$user->userNickName)
+    )
+    {
+        if(!$user->userNickName)
+            $user->userNickName  ="NO";
+        if(!$user->userFirstName)
+            $user->userFirstName ="First Name";
+        if(!$user->userLastName)
+            $user->userLastName  ="Last Name";
+        $user->userIsJukebox     = "NO";
+        $db->update($user);
+        //------------------------------------------------------
+        // Offer to update profile with better values...
+        //------------------------------------------------------
+        redirect("/user/index.php?func=edit_profile&errors=yes");
+    }
+    else if($user->userIsJukebox == "YES")
+    {
+        //-------------------------------------
+        // if we're a jukebox now, gonna
+        // need a mp3 folder and an Upload
+        // record and jukebox permissions...
+        //-------------------------------------
+        $udir= mp3Data().$id;
+        $dir = $udir."/songs/";
+        
+        if(!file_exists($udir))
+            mkdir($udir);
+        if(!file_exists($dir))
+            mkdir($dir);
+        //---------------------------------------
+        // Add user to 'jukeboxAdmin' group
+        //---------------------------------------
+        if(!hasPermission('canJukeboxAdmin'))
+        {
+            $db2 = new User_ugroupModel();
+            $ug  = new User_ugroup();
+            $ug->userId   = $user->userId;
+            $ug->ugroupId = 3; //this is a 'jukeboxAdmin'
+            $db2->insert($ug);
+            setPermission('canJukeboxAdmin');
+        }
+        //-------------------------------------------
+        // Create upload record if it's not there...
+        //-------------------------------------------
+        $db3    = new UserUploadModel();
+        $upload = $db3->findByUserId($user->userId);
+        if(!$upload)
+        {
+            $up = new Upload();
+            $up->userId        = $user->userId;
+            $up->uploadSource  = "UPLOAD";
+            $up->uploadCreated = sqlNow();
+            $up->uploadModified= sqlNow();
+            $up->uploadStatus  = "COMPLETE";
+            $db3->insert($up);
+        }
+        //------------------------------------------------------
+        // Go to "My-Catalog" to update songs...
+        //------------------------------------------------------
+        $db->update($user);
+        redirect("/user/index.php?func=player&catalog=yes&jukeboxId=".$user->userId);        
+    }
+    else
+    {
+        //-----------------------------------------------
+        // Otherwise, remove from jukeboxAdmin group and
+        // go find a jukebox to play...
+        //-----------------------------------------------
+        unsetPermission('canJukeboxAdmin');
+        $db4 = new User_ugroupModel();
+        $db4->delete($user->userId,3);
+        $db->update($user);
+        redirect("/user/index.php?func=find_jukebox");        
+    }
 }
 
 
@@ -153,6 +247,3 @@ function editCatalog()
 }
 
 ?>
-
-
-

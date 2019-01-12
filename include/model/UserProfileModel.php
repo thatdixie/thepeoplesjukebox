@@ -92,7 +92,7 @@ class UserProfileModel extends UserModel
                       "userModified,".
                       "userStatus ".                      		               
 	       "FROM user ".
-	       "WHERE userIsJukebox='YES' AND userStatus='ACTIVE' AND userPhoto!='NO' LIMIT 5";
+	       "WHERE userIsJukebox='YES' AND userStatus='ACTIVE' AND userPhoto!='NO' LIMIT 7";
         
         $users = $this->selectDB($query, "User");
         $db    = new UserMediaModel();
