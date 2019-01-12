@@ -68,12 +68,10 @@ function playOnIphone(p, u, pc, jb)
     
     if(page.mp3)
     {
-        //page.mp3.pause();
-        //page.mp3  = null;
-        //page.mp3  = new Audio(soundfile);
-        //page.mp3.loop = false;
- 	//page.mp3.play();
-//        page.currentTime =0;
+        page.mp3  = new Audio(soundfile);
+        page.currentTime =0;
+        page.mp3.loop = false;
+        page.mp3.play();
     }
     else
     {	
