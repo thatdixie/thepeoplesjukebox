@@ -300,7 +300,7 @@ function searchProfile() {
 	            userList.innerHTML+="<tr><td>"+users[i].nickName+" ("+users[i].firstName+" "+users[i].lastName+")"+
 		                       "</td><td>"+users[i].likes+
 		        "</td><td>"+users[i].workplace+
-		        "</td><td><a href=\"/user/index?func=player&jukeboxId="+users[i].userId+"\">Go to Jukebox</a></td></tr>";
+		        "</td><td><a href=\"/user/index.php?func=player&jukeboxId="+users[i].userId+"\">Go to Jukebox</a></td></tr>";
 	        }
 	    }
 	}
