@@ -9,6 +9,7 @@ siteSession();
 
 if(isAdminLoginOK())
 {
+    
     $func  = getRequest('func');
     $id    = getRequest('id');
     
@@ -38,7 +39,7 @@ if(isAdminLoginOK())
     elseif($func =="logout")
     {
         adminLogout();
-        redirect("/login/");
+        redirect("/admin/");
     }
     else
     {
