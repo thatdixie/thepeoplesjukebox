@@ -235,7 +235,6 @@ class UserMediaModel extends MediaModel
         if(count($medias) == 0)
         {
             $medias[0] = new Media();
-            $medias[0]->mediaid     = 0;
             $medias[0]->mediaFile   = defaultMediaFile();
             $medias[0]->mediaArtist = defaultMediaArtist();
             $medias[0]->mediaTitle  = defaultMediaTitle();

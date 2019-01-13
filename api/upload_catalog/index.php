@@ -44,7 +44,7 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         // ----------------------------------------------------
         $root   = realpath($_SERVER["DOCUMENT_ROOT"]);
         $script = $root."/scripts/processUpload.php";
-        exec("php ".$script."  ".$user[0]->userId." ".$root." > /dev/null &");
+        exec("php ".$script."  ".$user[0]->userId." ".$root." > /opt/data/jukebox/upload.log &");
 
         //-----------------------------------
         // return positive JSON response

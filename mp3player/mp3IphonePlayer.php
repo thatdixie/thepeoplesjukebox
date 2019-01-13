@@ -32,7 +32,12 @@ else
     $media = $db->getCurrentlyPlaying($jukeboxId);
 
 if($media)
-    $mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+{
+    if($media[0]->mediaId==0)
+        $mp3file = mp3Data()."default/songs/".defaultMediaFile();
+    else
+        $mp3file = mp3Data().$id."/songs/".$media[0]->mediaFile;
+}
 else
     $mp3file = mp3Data()."default/songs/".defaultMediaFile();
 

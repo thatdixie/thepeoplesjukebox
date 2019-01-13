@@ -61,10 +61,10 @@ function playOnIphone(p, u, pc, jb)
     //--------------------------------------------------------
     // We use the API to get currently playing information.
     //--------------------------------------------------------
-/*    URL='/api/play_next?username='+username+'&passcode='+passcode+'&jukeboxId='+jukeboxId;
+    URL='/api/play_next?username='+username+'&passcode='+passcode+'&jukeboxId='+jukeboxId;
     $.getJSON(URL, function(media) {
         document.getElementById("currently_playing").innerHTML =media.mediaTitle+" -- "+media.mediaArtist;
-    });*/
+    });
     
     if(page.mp3)
     {
