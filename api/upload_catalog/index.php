@@ -60,7 +60,7 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         // get metadata for new uploads
         //-----------------------------------------
         $db2         = new UserUploadModel();
-        $upload      = $db2->findByUserId($userId);   
+        $upload      = $db2->findByUserId($user[0]->userId);   
         $uploadMedia = json_decode($upload[0]->uploadMetaData, true);
 
         //--------------------------------------------
