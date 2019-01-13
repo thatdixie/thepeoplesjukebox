@@ -22,6 +22,7 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
 {
     if($user[0]->userIsJukebox == 'YES')
     {
+        error_log("upload_catalog called...",0);
         //-------------------------------------------------------
         // This will save upload metadata to upload table
         // where a seperate process will insert new media records
@@ -46,6 +47,8 @@ if(($user = $u->getUserSession(getRequest('username'), getRequest('passcode'))))
         $script = $root."/scripts/processUpload.php";
         error_log("php ".$script."  ".$user[0]->userId." ".$root." > /opt/data/jukebox/upload.log",0);
         exec("php ".$script."  ".$user[0]->userId." ".$root." > /opt/data/jukebox/upload.log");
+
+        error_log("upload_catalog returns good",0);
         
         //-----------------------------------
         // return positive JSON response
