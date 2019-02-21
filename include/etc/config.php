@@ -25,12 +25,12 @@ function smtpConfig()
 
 function mp3Data()
 {
-    return("/opt/data/jukebox/");
+    return("/opt/data2/jukebox/");
 }
 
 function photoData()
 {
-    return("/opt/data/jukebox/");
+    return("/opt/data2/jukebox/");
 }
 
 function maxUserPlayLimit()
