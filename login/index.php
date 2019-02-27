@@ -86,7 +86,11 @@ function adminPage()
         // You're not a site admin go to regular
         // jukebox page or home page.
         //-----------------------------------------
-        if(hasPermission("canJukeboxAdmin"))
+        $dest = getUserSession('DEST_URL');
+        error_log($dest,0);
+        if($dest!="")
+            redirect($dest);
+        else if(hasPermission("canJukeboxAdmin"))
             redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=player");
         else
             redirect("/");

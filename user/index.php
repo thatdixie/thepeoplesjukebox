@@ -61,6 +61,18 @@ else
     //------------------------------------
     // if we're not logged in, do that...
     //------------------------------------
+    $func = getRequest("func");
+    $id   = getRequest("jukeboxId");
+    if($func == "player")
+    {
+        error_log("Is player",0);
+        $dest = "/user/index.php?func=".$func."&jukeboxId=".$id;
+        setUserSession('DEST_URL',$dest);
+    }
+    else
+    {
+        setUserSesstion('DEST_URL',"");
+    }
     redirect("/login/");
 }
 
