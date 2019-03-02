@@ -99,5 +99,55 @@ function getUserGroups($u)
     return("");
 }
 
+/*
+ * redirects to most correct user landing page
+ *
+ * @param  n/a
+ * @return n/a 
+ * 
+**/			
+function findUserHomePage()
+{
+    if(!isSiteAdmin())
+    {
+        //-----------------------------------------
+        // You're not a site admin go to regular
+        // jukebox page or home page.
+        //-----------------------------------------
+        $dest = getLoginDestination();
+        if($dest != "")
+            redirect($dest);
+        else if(hasPermission("canJukeboxAdmin"))
+            redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=player");
+        else
+            redirect("/");
+    }
+    else
+    {
+        //-----------------------------------------------------
+        // OK, so we're logged-in as a site admin
+        // ...Go to admin inbox
+        //-----------------------------------------------------
+        redirect("/admin/index.php?func=inbox");
+   }
+}
+    
+/*
+ * returns true if user is a site admin login
+ *
+ * @param  n/a
+ * @return boolean -- true or false
+ * 
+**/			
+function isSiteAdmin()
+{
+    if(hasPermission("canPublish")
+    || hasPermission("canUserEdit")
+    || hasPermission("canContentEdit"))
+        return(true);
+    else
+        return(false);
+}
+
 
 ?>

@@ -65,13 +65,12 @@ else
     $id   = getRequest("jukeboxId");
     if($func == "player")
     {
-        error_log("Is player",0);
         $dest = "/user/index.php?func=".$func."&jukeboxId=".$id;
-        setUserSession('DEST_URL',$dest);
+        setLoginDestination($dest);
     }
     else
     {
-        setUserSesstion('DEST_URL',"");
+        setLoginDestination("");
     }
     redirect("/login/");
 }

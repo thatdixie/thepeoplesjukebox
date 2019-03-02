@@ -22,7 +22,7 @@ function siteSession()
 {
     if(!isset($_SESSION['SITESESSION']))
     {
-        session_start(['cookie_lifetime' => 86400*365*10,]);
+        session_start();
 	    $_SESSION['SITESESSION'] ="OK";
     }
 }
@@ -163,7 +163,10 @@ function setUserSession($p, $v)
 */			
 function getUserSession($p)
 {
-    return($_SESSION[$p]);
+    if(isset($_SESSION[$p]))
+        return($_SESSION[$p]);
+    else
+        return("");
 }
 
 /*
@@ -236,6 +239,30 @@ function isIphoneUI()
         return(true);
     else
         return(false);
+}
+
+/*
+ * set login destination 
+ *
+ * @param  string  -- $url
+ * @return n/a
+ * 
+**/			
+function setLoginDestination($url)
+{
+    setUserSession('DEST_URL', $url);
+}
+
+/*
+ * get login destination 
+ *
+ * @param  n/a
+ * @return string - $url
+ * 
+**/			
+function getLoginDestination()
+{
+    return(getUserSession('DEST_URL'));
 }
 
 ?>

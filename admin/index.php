@@ -8,8 +8,7 @@ require_once "../include/controller/admin/admin.php";
 siteSession();
 
 if(isAdminLoginOK())
-{
-    
+{    
     $func  = getRequest('func');
     $id    = getRequest('id');
     
@@ -39,15 +38,25 @@ if(isAdminLoginOK())
     elseif($func =="logout")
     {
         adminLogout();
-        redirect("/admin/");
+        redirect("/login/");
+    }
+    elseif($func =="inbox" && isSiteAdmin())
+    {
+        //-----------------------------------------------------
+        // OK, so we're logged-in as a site admin
+        // ...Go to admin inbox
+        //-----------------------------------------------------        
+        require_once "../include/model/AdminContactModel.php";
+        $db       = new AdminContactModel();
+        $contacts = $db->findUnread();
+        adminHome($contacts);
     }
     else
     {
-        //---------------------------------------
-        // We're logged-in show admin home page
-        // (it's our contact inbox) 
-        //---------------------------------------
-        adminPage();
+        //----------------------------------------
+        // We're logged in so find landing page...
+        //----------------------------------------
+        findUserHomePage();
     }
 }
 else
@@ -64,50 +73,19 @@ else
 	    // Check username and password 
 	    //---------------------------------------
 	    if(adminLogin($username, $password))
-            adminPage();
+            findUserHomePage();
         else
-	        loginPage();
+	        login();
     }
     else
     {
-        loginPage();
+        //--------------------
+        // Display login form
+        //--------------------
+        login();
     }
 }
 
-//---------------------------------------
-// admin home page
-//---------------------------------------
-function adminPage()
-{
-    if(!hasPermission("canPublish")
-    && !hasPermission("canUserEdit")
-    && !hasPermission("canContentEdit"))
-    {
-        //-----------------------------------------
-        // You're not a site admin go to regular
-        // jukebox page or home page.
-        //-----------------------------------------
-        if(hasPermission("canJukeboxAdmin"))
-            redirect("/user/index.php?jukeboxId=".getUserSession("userId")."&func=player");
-        else
-            redirect("/");
-    }
-
-    require_once "../include/model/AdminContactModel.php";
-
-    $db       = new AdminContactModel();
-    $contacts = $db->findUnread();
-    
-    adminHome($contacts);
-}
-
-//---------------------------------------
-// We're not logged-in show login screen
-//---------------------------------------
-function loginPage()
-{
-    login();
-}
 
 //---------------------------------------
 // mark as read
@@ -186,7 +164,7 @@ function deleteContact($id)
     //----------------------------------------------
     // decided just going back to admin is good :-)
     //----------------------------------------------
-    adminPage();
+    findUserHomePage();
 }
 
 //---------------------------------------
