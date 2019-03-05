@@ -15,7 +15,7 @@ function systemEmail()
 function pubServerAddress()
 {
     return("http://thepeoplesjukebox.com");
-    //return("http://temp.metaq");
+    //return("http://localhost:9000");
 }
 
 function smtpConfig()
