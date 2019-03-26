@@ -47,8 +47,16 @@ function activateUser()
         
         if($db->resetUserLogin($username, $password, $resetCode))
         {
-            redirect("/login/");
-            return;
+            if(adminLogin($username, $password))
+            {
+                findUserHomePage();
+                return;
+            }
+            else
+            {    
+                redirect("/login/");
+                return;
+            }
         }
     }
     
