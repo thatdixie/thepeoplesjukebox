@@ -325,5 +325,4 @@ function adminUserRemoveGroup($id, $gid)
         viewEditUser($user, $userGroups, $groups);
 }
 
-
 ?>
