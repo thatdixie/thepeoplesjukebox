@@ -12,6 +12,7 @@ require_once $root."/include/etc/session.php";
 require_once $root."/include/model/UserModel.php";
 require_once $root."/include/model/UserPermissionsModel.php";
 require_once $root."/include/model/UserLoginModel.php";
+require_once $root."/include/etc/ipstack.php";
 
 /*
  * validates a username/password
@@ -30,14 +31,15 @@ function adminLogin($u, $p)
         setAdminLoginOk();
         setUserSession('userName'     , $user->userName);
         setUserSession('userFirstName', $user->userFirstName);
-	    setUserSession('userLastName' , $user->userLastName);
-	    setUserSession('userStatus'   , $user->userStatus);
-	    setUserSession('userLastLogin', toHumanDate($user->userLastLogin));
+	setUserSession('userLastName' , $user->userLastName);
+	setUserSession('userStatus'   , $user->userStatus);
+	setUserSession('userLastLogin', toHumanDate($user->userLastLogin));
         setUserSession('userId'       , $user->userId);
         setUserSession('userPasscode' , $user->userPasscode);
         setUserSession('nextLastLogin', sqlNow());
-	    getUserPermissions($user->userId);
         setUserSession('userAgent'    , $_SERVER['HTTP_USER_AGENT']);
+        setUserLocation($db, $user);
+        getUserPermissions($user->userId);
         //error_log($_SERVER['HTTP_USER_AGENT'],0);
 	    return(true);
     }
@@ -147,6 +149,22 @@ function isSiteAdmin()
         return(true);
     else
         return(false);
+}
+
+    
+/*
+ * updates longitude and latitude in the user table
+ *
+ * @param  $db
+ * @param  $user
+ * 
+**/			
+function setUserLocation($d, $u)
+{
+    ipstack();     //loads IP info into session
+    $u->userLongitude = getUserSession('LOC_LONGITUDE');
+    $u->userLatitude  = getUserSession('LOC_LATITUDE');
+    $d->update($u);
 }
 
 

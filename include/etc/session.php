@@ -1,5 +1,7 @@
 <?php
 
+require_once "environment.php";
+
 /**************************************
  * session related functions such as: 
  *
