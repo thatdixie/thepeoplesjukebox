@@ -81,7 +81,8 @@ class UserProfileModel extends UserModel
 	    $long = -73.979019165039;
 	    $lat  = 40.758911132812;
 	}
-
+	error_log("long=".$long,0);
+	error_log("lat=".$lat,0);	
         $query="SELECT userId,".
                       "accountId,".
                       "userName,".

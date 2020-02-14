@@ -1,5 +1,6 @@
 <?php
 require_once "include/etc/session.php";
+require_once "include/etc/ipstack.php";
 require_once "include/view/page/index/indexIncludeFiles.php";
 require_once "include/model/AdminFaqModel.php";
 require_once "include/model/UserProfileModel.php";
@@ -14,9 +15,10 @@ nav();
 // We want to show Jukebox's near
 // the users browser...
 //-----------------------------------
+ipstack();
 $db       = new UserProfileModel();
-$long     =0;  // actual GEO coord's
-$lat      =0;  // comming soon...
+$long     = getUserSession('LOC_LONGITUDE');  // actual GEO coord's
+$lat      = getUserSession('LOC_LATITUDE');   // comming soon...
 $profiles = $db->findJukeBoxNearMe($long, $lat); 
 about($profiles);
 //-----------------------------------
