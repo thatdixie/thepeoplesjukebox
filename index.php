@@ -14,11 +14,13 @@ nav();
 //-----------------------------------
 // We want to show Jukebox's near
 // the users browser...
+//
+// using ipstack http://ipstack.com 
 //-----------------------------------
-ipstack();
+ipstack();  
 $db       = new UserProfileModel();
-$long     = getUserSession('LOC_LONGITUDE');  // actual GEO coord's
-$lat      = getUserSession('LOC_LATITUDE');   // comming soon...
+$long     = getUserSession('LOC_LONGITUDE');
+$lat      = getUserSession('LOC_LATITUDE');
 $profiles = $db->findJukeBoxNearMe($long, $lat); 
 about($profiles);
 //-----------------------------------

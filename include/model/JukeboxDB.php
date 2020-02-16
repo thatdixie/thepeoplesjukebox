@@ -22,9 +22,9 @@ class JukeboxDB implements DBConstants
     public function connectDB()
     {
         //--------------------------------------
-	    // Construct Data Source Name (DSN)
-	    // username and password for PDO object
-	    //--------------------------------------
+	// Construct Data Source Name (DSN)
+	// username and password for PDO object
+	//--------------------------------------
         $dsn =""        .JukeboxDB::DBDRIVER.  ":";
         $dsn.="host="   .JukeboxDB::DBSERVER.  ";";
         $dsn.="dbname=" .JukeboxDB::DBNAME.    ";";
