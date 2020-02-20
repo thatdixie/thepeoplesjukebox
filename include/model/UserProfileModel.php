@@ -4,6 +4,7 @@ require_once $root."/include/etc/sql.php";
 require_once "JukeboxDB.php";
 require_once "UserModel.php";
 require_once "UserMediaModel.php";
+require_once "UserDistance.php";
 
 /********************************************************************
  * UserProfileModel inherits UserModel and provides functions to
@@ -70,7 +71,7 @@ class UserProfileModel extends UserModel
      * @return JukeBoxProfile
      *********************************************************
      */
-    public function findJukeboxNearMe($long, $lat)
+    public function findJukeboxNearMe($long=0, $lat=0)
     {
         //----------------------------------------
         // check for valid longitude and lattitude
@@ -82,29 +83,39 @@ class UserProfileModel extends UserModel
 	    $lat  = 40.758911132812;
 	}
 
-        $query="SELECT userId,".
-                      "accountId,".
-                      "userName,".
-                      "userPassword,".
-                      "userPasscode,".
-                      "userFirstName,".
-                      "userLastName,".
-                      "userIsJukebox,".
-                      "userNickName,".
-                      "userLikes,".
-                      "userWorkplace,".
-                      "userWorkHours,".
-                      "userPhoto,".
-                      "userLongitude,".
-                      "userLatitude,".
-                      "userLastLogin,".
-                      "userCreated,".
-                      "userModified,".
-                      "userStatus ".                      		               
-	       "FROM user ".
-	       "WHERE userIsJukebox='YES' AND userStatus='ACTIVE' AND userPhoto!='NO' LIMIT 7";
-        
-        $users = $this->selectDB($query, "User");
+        $query ="SELECT userId,".
+                       "accountId,".
+                       "userName,".
+                       "userPassword,".
+                       "userPasscode,".
+                       "userFirstName,".
+                       "userLastName,".
+                       "userIsJukebox,".
+                       "userNickName,".
+                       "userLikes,".
+                       "userWorkplace,".
+                       "userWorkHours,".
+                       "userPhoto,".
+                       "userLongitude,".
+                       "userLatitude,".
+                       "userLastLogin,".
+                       "userCreated,".
+                       "userModified,".
+                       "userStatus,".
+                       "111.045 ".
+		       "* DEGREES(ACOS(COS(RADIANS(".$lat.")) ".
+		       "* COS(RADIANS(userLatitude)) ".
+		       "* COS(RADIANS(userLongitude) ".
+		       "- RADIANS(".$long.")) ".
+		       "+ SIN(RADIANS(".$lat.")) ".
+		       "* SIN(RADIANS(userLatitude)))) ".
+	        "AS distance ".
+                "FROM user ".
+                "WHERE userIsJukebox = 'YES' AND userStatus='ACTIVE' AND userPhoto!='NO' ".
+                "ORDER BY distance ASC ".
+                "LIMIT 0 , 7"; 
+        error_log($query,0);
+        $users = $this->selectDB($query, "UserDistance");
         $db    = new UserMediaModel();
     
         for($i=0; $i<count($users); $i++)

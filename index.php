@@ -4,6 +4,7 @@ require_once "include/etc/ipstack.php";
 require_once "include/view/page/index/indexIncludeFiles.php";
 require_once "include/model/AdminFaqModel.php";
 require_once "include/model/UserProfileModel.php";
+require_once "include/model/UserDistance.php";
 siteSession();
 //-----------------------------------
 // partials for head and navigation
