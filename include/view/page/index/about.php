@@ -38,7 +38,7 @@ function about($profiles)
               <td><b>Likes:</b></td><td><?php echo $profile->userLikes; ?></td>
             </tr>
             <tr>
-              <td><b>Where:</b></td><td><?php echo $profile->userWorkplace; ?></td>
+	      <td><b>Where:</b></td><td><?php echo $profile->userWorkplace." (".round($profile->distance, 1)." miles)"; ?></td>
             </tr>
             <tr>
               <td><b>When:</b></td><td><?php echo $profile->userWorkHours; ?></td>

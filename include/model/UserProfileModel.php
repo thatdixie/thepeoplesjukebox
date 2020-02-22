@@ -73,6 +73,7 @@ class UserProfileModel extends UserModel
      */
     public function findJukeboxNearMe($long=0, $lat=0)
     {
+	
         //----------------------------------------
         // check for valid longitude and lattitude
 	//----------------------------------------
@@ -82,6 +83,9 @@ class UserProfileModel extends UserModel
 	    $long = -73.979019165039;
 	    $lat  = 40.758911132812;
 	}
+
+	$kilometers="111.045 ";
+	$miles     ="69.0 ";
 
         $query ="SELECT userId,".
                        "accountId,".
@@ -102,7 +106,7 @@ class UserProfileModel extends UserModel
                        "userCreated,".
                        "userModified,".
                        "userStatus,".
-                       "111.045 ".
+	               $miles.
 		       "* DEGREES(ACOS(COS(RADIANS(".$lat.")) ".
 		       "* COS(RADIANS(userLatitude)) ".
 		       "* COS(RADIANS(userLongitude) ".
@@ -113,8 +117,10 @@ class UserProfileModel extends UserModel
                 "FROM user ".
                 "WHERE userIsJukebox = 'YES' AND userStatus='ACTIVE' AND userPhoto!='NO' ".
                 "ORDER BY distance ASC ".
-                "LIMIT 0 , 7"; 
-        error_log($query,0);
+                "LIMIT 0 , 7";
+ 
+        //error_log($query,0);
+
         $users = $this->selectDB($query, "UserDistance");
         $db    = new UserMediaModel();
     
@@ -124,51 +130,7 @@ class UserProfileModel extends UserModel
             $users[$i]->userStatus = $media[0]->mediaTitle." -- ".$media[0]->mediaArtist;
         }
         return($users);
-    }
-    
-    /*********************************************************
-     * Find Jukeboxs near me
-     *
-     * @param  $long float 
-     * @param  $lat  float
-     * @return JukeBoxProfile
-     *********************************************************
-     */
-/*    public function findJukeboxNearMe($long=0, $lat=0)
-    {
-        $query="SELECT userId,".
-                      "accountId,".
-                      "userName,".
-                      "userPassword,".
-                      "userPasscode,".
-                      "userFirstName,".
-                      "userLastName,".
-                      "userIsJukebox,".
-                      "userNickName,".
-                      "userLikes,".
-                      "userWorkplace,".
-                      "userWorkHours,".
-                      "userPhoto,".
-                      "userLongitude,".
-                      "userLatitude,".
-                      "userLastLogin,".
-                      "userCreated,".
-                      "userModified,".
-                      "userStatus ".                      		               
-	       "FROM user ".
-	       "WHERE userIsJukebox='YES' AND userStatus='ACTIVE' AND userPhoto!='NO' LIMIT 7";
-        
-        $users = $this->selectDB($query, "User");
-        $db    = new UserMediaModel();
-    
-        for($i=0; $i<count($users); $i++)
-        {
-            $media = $db->findCurrentlyPlaying($users[$i]->userId);
-            $users[$i]->userStatus = $media[0]->mediaTitle." -- ".$media[0]->mediaArtist;
-        }
-        return($users);
-    }
-*/    
+    }    
 }
 
 ?>
