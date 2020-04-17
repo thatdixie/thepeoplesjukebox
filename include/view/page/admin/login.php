@@ -33,7 +33,7 @@ function login()
                   <div class="form-group">
                     <input type="hidden" name="login" value="yes">
                     <button type="submit" name="submit" class="btn btn-primary btn-lrg" required="required">Login</button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/signup/" style="color: black">Sign Up Here!</a> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/signup/" style="color: black">Sign Up Here!</a><br><br><br> 
                   </div>
                 </div>
               </div>

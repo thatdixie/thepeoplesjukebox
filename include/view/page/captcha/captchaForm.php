@@ -17,7 +17,7 @@ function captcha()
       <div class="container">
         <div class="center">
           <br><br><br>
-          <h2>Hope you're not a robot?</h2>
+          <h2>Hope you're not a robot?</h2><br>
         </div>
       <div class="row contact-wrap">						
         <div class="status alert alert-success" style="display: none"></div>
@@ -29,7 +29,7 @@ function captcha()
                   <img src="{$_SESSION['captcha']['image_src']}" >
                   <input type="text" name="captchaCode" class="form-control" id="cap1" required="required" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
                   <input type="hidden" name="captchaPage" value="{$_SESSION['captchaPage']}" >
-	          <button type="submit" name="submit" class="btn btn-primary btn-lg" >I'm not a robot!</button>
+	          <button type="submit" name="submit" class="btn btn-primary btn-lg" >I'm not a robot!</button><br><br><br>
 		  </div>
                 </div>
               </div>
