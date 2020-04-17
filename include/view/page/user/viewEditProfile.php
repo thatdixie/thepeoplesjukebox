@@ -29,7 +29,7 @@ function viewEditProfile($profile)
     nav();            
 ?>
   <section id="about">
-    <div style="background-color: grey">
+    <!--<div style="background-color: grey">-->
       <div class="container">
         <div class="center"><br>
           <div class="row">
